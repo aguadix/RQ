@@ -1,2 +1,2 @@
 # RQ
-Reactores Químicos, Grado en Ingeniería Química
+ Reactores Químicos (Grado en Ingeniería Química)
