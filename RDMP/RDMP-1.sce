@@ -1,5 +1,5 @@
 clear; clc;
-// RDMP-01
+// RDMP-1
 // A => B
 // Isotermo
 
@@ -27,8 +27,8 @@ Prod = CBfin/(tfin+tp) // mol/(L*h)
 
 scf(1); clf(1); 
 plot(t,XA);
-xgrid; xtitle('RDMP-01','t','XA');
+xgrid; xtitle('RDMP-1','t','XA');
 
 scf(2); 
 plot(tfin,Prod,'ro');
-xgrid; xtitle('RDMP-01','tfin','Prod');
+xgrid; xtitle('RDMP-1','tfin','Prod');
