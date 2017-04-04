@@ -12,7 +12,7 @@ CA0 = 1; // mol/L
 V = 1; // L
 k = 0.1; // 1/h
 
-i = 1:N; CAini(i) = 0;
+i = 1:N; CAini(i) = 0; // mol/L
 xini = CAini;
 
 tfin = 25; dt = 0.1; // h
