@@ -9,7 +9,7 @@ CA0 = 1; // mol/L
 V = 10; // L
 k = 0.1; // 1/h
 
-CAeeguess = 1; // L/h
+CAeeguess = 1; // mol/L
 xeeguess = CAeeguess;
 
 function dxdt = f(x)
