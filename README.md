@@ -4,6 +4,11 @@ Reactores Químicos (Grado en Ingeniería Química)
 
 Código en Scilab (http://www.scilab.org)
 
+This site was built using [GitHub Pages](https://pages.github.com/).
+
+
+
+
 1 RDMP: Reactor discontinuo mezcla perfecta
 
 2 RCMP: Reactor continuo mezcla perfecta
