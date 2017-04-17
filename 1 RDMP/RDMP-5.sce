@@ -54,4 +54,3 @@ xgrid; xtitle('RDMP-5','t','CA(azul), CB(verde), CP(rojo)')
 scf(3); clf(3); 
 plot(t,T,tobj,Tobj,'ro');
 xgrid; xtitle('RDMP-5','t','T')
-
