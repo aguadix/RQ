@@ -37,8 +37,10 @@ endfunction
 x01 = [CA0;CB0;CP0;T0];
 tautot1 = tautot*frac1; 
 tau1 = 0:dtau:tautot1;
-x1 = ode(x01,0,tau1,f);
+V1 = tau1*F; // L
+L1 = V1/(%pi/4*D^2); // dm 
 
+x1 = ode(x01,0,tau1,f);
 CA1 = x1(1,:); CA1s = CA1($)
 CB1 = x1(2,:); CB1s = CB1($)
 CP1 = x1(3,:); CP1s = CP1($)
@@ -50,18 +52,28 @@ XA1 = 1 - CA1/CA0; XA1s = XA1($)
 x02 = [CA1s;CB1s;CP1s;T0];
 tautot2 = tautot*(1-frac1); 
 tau2 = 0:dtau:tautot2;
-x2 = ode(x02,0,tau2,f);
+V2 = tau2*F; // L
+L2 = V2/(%pi/4*D^2); // dm 
 
+x2 = ode(x02,0,tau2,f);
 CA2 = x2(1,:); CA2s = CA2($)
 CB2 = x2(2,:); CB2s = CB2($)
 CP2 = x2(3,:); CP2s = CP2($)
 T2 = x2(4,:); T2s = T2($)
 XA2 = 1 - CA2/CA0; XA2s = XA2($)
 
-scf(1); clf(1)  
+scf(1); clf(1); 
+plot(L1,XA1,L2,XA2);
+xgrid(); xtitle('RCFP-2b','L','XA');
+
+scf(2); clf(2); 
+plot(L1,T1,L2,T2);
+xgrid(); xtitle('RCFP-2b','L','T');
+
+scf(3); clf(3)  
 plot(T1,XA1,T1s,XA1s,'ro',T2,XA2,T2s,XA2s,'ro');
 xgrid; xtitle('RCFP-2b','T','XA');
 
-scf(2);   
+scf(4);
 plot(frac1, XA2s,'ro');
 xgrid; xtitle('RCFP-2b','frac1','XA2s');
