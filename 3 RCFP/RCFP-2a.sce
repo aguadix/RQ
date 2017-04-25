@@ -45,7 +45,7 @@ Tobj = T(index)
 
 scf(1); clf(1); 
 plot(L,XA,Lobj,XAobj,'ro');
-xgrid(); xtitle('RCFP-2a','L','XA');
+xgrid; xtitle('RCFP-2a','L','XA');
 
 scf(2); clf(2); 
 plot(L,T,Lobj,Tobj,'ro');
