@@ -64,11 +64,11 @@ XA2 = 1 - CA2/CA0; XA2s = XA2($)
 
 scf(1); clf(1); 
 plot(L1,XA1,L2,XA2);
-xgrid(); xtitle('RCFP-2b','L','XA');
+xgrid; xtitle('RCFP-2b','L','XA');
 
 scf(2); clf(2); 
 plot(L1,T1,L2,T2);
-xgrid(); xtitle('RCFP-2b','L','T');
+xgrid; xtitle('RCFP-2b','L','T');
 
 scf(3); clf(3)  
 plot(T1,XA1,T1s,XA1s,'ro',T2,XA2,T2s,XA2s,'ro');
