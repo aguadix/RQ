@@ -18,7 +18,7 @@ T = 310; // K
 CA0 = 1.5; CB0 = 2; CP0 = 0.1; // mol/L
 x0 = [CA0;CB0;CP0];
 
-tautot = 200; dtau = 0.01; // h
+tautot = 2000; dtau = 0.01; // h
 tau = 0:dtau:tautot;
 
 function dxdtau = f(tau,x)
