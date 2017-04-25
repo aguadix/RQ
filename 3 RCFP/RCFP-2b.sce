@@ -4,6 +4,7 @@ clear; clc;
 // Adiabático
 // Estado estacionario
 // 2 etapas con enfriamiento intermedio
+// https://files.acrobat.com/a/preview/d2971fac-0649-4a92-be96-dd608d48cc9b
 
 frac1 = 0.5;
 
