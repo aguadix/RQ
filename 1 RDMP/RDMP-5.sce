@@ -45,12 +45,12 @@ Tobj = T(index)
 
 scf(1);  
 plot(Tini,XAeq,'ro');
-xgrid; xtitle('RDMP-5','Tini','XAeq')
+xgrid; xtitle('RDMP-5','Tini','XAeq');
 
 scf(2); clf(2); 
 plot(t,CA,t,CB,t,CP,tobj,CAobj,'ro',tobj,CBobj,'ro',tobj,CPobj,'ro'); 
-xgrid; xtitle('RDMP-5','t','CA(azul), CB(verde), CP(rojo)')
+xgrid; xtitle('RDMP-5','t','CA(azul), CB(verde), CP(rojo)');
 
 scf(3); clf(3); 
 plot(t,T,tobj,Tobj,'ro');
-xgrid; xtitle('RDMP-5','t','T')
+xgrid; xtitle('RDMP-5','t','T');

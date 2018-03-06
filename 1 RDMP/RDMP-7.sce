@@ -43,8 +43,8 @@ CPobj = CP(index)
 
 scf(1); clf(1); 
 plot(t,V,tobj,Vobj,'ro');
-xgrid; xtitle('RDMP-7','t','V')
+xgrid; xtitle('RDMP-7','t','V');
 
 scf(2); clf(2); 
 plot(t,CA,t,CP,tobj,CAobj,'ro',tobj,CPobj,'ro');
-xgrid; xtitle('RDMP-7','t','CA(azul), CP(verde)')
+xgrid; xtitle('RDMP-7','t','CA(azul), CP(verde)');

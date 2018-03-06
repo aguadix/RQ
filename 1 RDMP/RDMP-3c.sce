@@ -57,12 +57,12 @@ T = x(N+2,:); Tfin = T($)
 
 scf(1); clf(1);
 plot(t,CA);
-xgrid; xtitle('RDMP-3c','t','CA')
+xgrid; xtitle('RDMP-3c','t','CA');
 
 scf(2); clf(2);
 plot(t,T);
-xgrid; xtitle('RDMP-3c','t','T')
+xgrid; xtitle('RDMP-3c','t','T');
 
 scf(3); clf(3);
 plot(t,Ts);
-xgrid; xtitle('RDMP-3c','t','Ts')
+xgrid; xtitle('RDMP-3c','t','Ts');

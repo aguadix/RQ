@@ -44,12 +44,12 @@ TJ = x(3,:); TJfin = TJ($)
 
 scf(1); clf(1);
 plot(t,CA);
-xgrid; xtitle('RDMP-3b','t','CA')
+xgrid; xtitle('RDMP-3b','t','CA');
 
 scf(2); clf(2);
 plot(t,T);
-xgrid; xtitle('RDMP-3b','t','T')
+xgrid; xtitle('RDMP-3b','t','T');
 
 scf(3); clf(3);
 plot(t,TJ);
-xgrid; xtitle('RDMP-3b','t','TJ')
+xgrid; xtitle('RDMP-3b','t','TJ');

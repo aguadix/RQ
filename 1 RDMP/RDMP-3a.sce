@@ -41,8 +41,8 @@ CATmax = CA(index)
 
 scf(1); clf(1); 
 plot(t,CA,tTmax,CATmax,'ro');
-xgrid; xtitle('RDMP-3a','t','CA')
+xgrid; xtitle('RDMP-3a','t','CA');
 
 scf(2); clf(2); 
 plot(t,T,tTmax,Tmax,'ro');
-xgrid; xtitle('RDMP-3a','t','T')
+xgrid; xtitle('RDMP-3a','t','T');

@@ -36,9 +36,8 @@ Tobj = T(index)
 
 scf(1); clf(1); 
 plot(t,XA,tobj,XAobj,'ro');
-xgrid; xtitle('RDMP-2','t','XA')
+xgrid; xtitle('RDMP-2','t','XA');
 
 scf(2); clf(2); 
 plot(t,T,tobj,Tobj,'ro');
-xgrid; xtitle('RDMP-2','t','T')
-
+xgrid; xtitle('RDMP-2','t','T');
