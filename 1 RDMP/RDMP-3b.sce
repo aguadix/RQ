@@ -1,5 +1,5 @@
 clear; clc;
-// RDMP-3b
+// RDMP-3b.sce
 // A => B
 // No adiabático: camisa a temperatura variable
 

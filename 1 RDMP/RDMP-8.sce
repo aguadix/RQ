@@ -1,5 +1,5 @@
 clear; clc;
-// RDMP-8
+// RDMP-8.sce
 // A(g) + B(g) <=> P(g)
 // Isotermo, isobárico
 

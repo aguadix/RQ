@@ -1,5 +1,5 @@
 clear; clc;
-// RDMP-1
+// RDMP-1.sce
 // A => B
 // Isotermo
 

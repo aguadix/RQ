@@ -1,5 +1,5 @@
 clear; clc;
-// RDMP-5
+// RDMP-5.sce
 // A + B <=> P
 // Adiabático
 
