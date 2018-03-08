@@ -24,8 +24,9 @@ xeeguess = [CAeeguess; Teeguess];
 function dxdt = f(x)
     k = k0*exp(-E/(R*x(2)))
     r = k*x(1)
+    Q = UA*(x(2)-TJ)
     dxdt(1) = F*(CA0-x(1))/V - r
-    dxdt(2) = F*(T0-x(2))/V - H*r/(RHO*CP) - UA*(x(2)-TJ)/(V*RHO*CP) 
+    dxdt(2) = F*(T0-x(2))/V - H*r/(RHO*CP) - Q/(V*RHO*CP) 
 endfunction
 
 [xee,v,info] = fsolve(xeeguess,f)

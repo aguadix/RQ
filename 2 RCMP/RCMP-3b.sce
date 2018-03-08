@@ -31,5 +31,5 @@ CA = x; CAee = CA(:,$)
 XA = 1 - CA/CA0; XAee = XA(:,$)
  
 scf(1); clf(1);
-plot(t,CA)
+plot(t,CA);
 xgrid; xtitle('RCMP-3b', 't', 'CA');

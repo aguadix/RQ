@@ -30,5 +30,5 @@ CP = x(3,:); CPee = CP($)
 XA = 1-CA/CA0; XAee = XA($)
 
 scf(1); clf(1);
-plot(t,CA,t,CB,t,CP)
+plot(t,CA,t,CB,t,CP);
 xgrid; xtitle('RCMP-2b', 't', 'CA(azul), CB(verde), CP(rojo)');
