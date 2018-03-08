@@ -1,5 +1,5 @@
 clear; clc;
-// RCMP-4c
+// RCMP-4c.sce
 // A => B
 // No adiabático
 // Dinámica

@@ -1,5 +1,5 @@
 clear; clc;
-// RCMP-4b
+// RCMP-4b.sce
 // A => B
 // No adiabático
 // Estados estacionarios

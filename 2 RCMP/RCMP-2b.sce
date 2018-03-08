@@ -1,5 +1,5 @@
 clear; clc;
-// RCMP-2b
+// RCMP-2b.sce
 // A + B <=> P
 // Isotermo
 // Dinámica

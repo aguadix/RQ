@@ -1,5 +1,5 @@
 clear; clc;
-// RCMP-2a
+// RCMP-2a.sce
 // A + B <=> P
 // Isotermo
 // Estado estacionario

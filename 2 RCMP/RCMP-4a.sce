@@ -1,5 +1,5 @@
 clear; clc;
-// RCMP-4a
+// RCMP-4a.sce
 // A => B
 // No adiabático
 // Método gráfico

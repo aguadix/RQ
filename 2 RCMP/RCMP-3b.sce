@@ -1,5 +1,5 @@
 clear; clc;
-// RCMP-3b
+// RCMP-3b.sce
 // A => B
 // Reactores en serie
 // Isotermo
