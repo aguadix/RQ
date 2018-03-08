@@ -2,7 +2,7 @@ clear; clc;
 // RCMP-4a
 // A => B
 // No adiabático
-// Calor generado = calor perdido
+// Método gráfico
 
 CP = 0.8; // cal/(g*K)
 RHO = 1000; // g/L
@@ -21,9 +21,10 @@ T = 280:0.1:500;
 k = k0*exp(-E./(R*T));
 CA = CA0./(1+k*V/F);
 r = k.*CA;
+Q = UA*(T-TJ);
 
-HG = -H*r/(RHO*CP);
-HL = F*(T-T0)/V + UA*(T-TJ)/(V*RHO*CP);
+HG = -H*r*V; // Calor ganado
+HL = F*RHO*CP*(T-T0) + Q; // Calor perdido
 
 Nee = 0;
 for i = 1:length(T)-1
