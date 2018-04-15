@@ -1,5 +1,5 @@
 clear; clc;
-// RCFP-3
+// RCFP-3.sce
 // A + B <=> P
 // No adiabático
 // Estado estacionario

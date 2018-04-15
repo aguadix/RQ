@@ -1,5 +1,5 @@
 clear; clc;
-// RCFP-1
+// RCFP-1.sce
 // A + B <=> P
 // Isotermo
 // Estado estacionario

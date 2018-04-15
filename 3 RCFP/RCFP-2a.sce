@@ -1,5 +1,5 @@
 clear; clc;
-// RCFP-2a
+// RCFP-2a.sce
 // A + B <=> P
 // Adiabático
 // Estado estacionario

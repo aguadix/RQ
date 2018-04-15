@@ -1,5 +1,5 @@
 clear; clc;
-// RCFP-5
+// RCFP-5.sce
 // A + B => 2 B
 // Isotermo
 // Recirculación
@@ -47,9 +47,9 @@ for iter = 1:itermax
 end
 
 scf(1); clf(1);  
-plot(tau,XA)
+plot(tau,XA);
 xgrid; xtitle('RCFP-5','tau','XA');
 
 scf(2);  
-plot(R,XAs,'ro')
+plot(R,XAs,'ro');
 xgrid; xtitle('RCFP-5','R','XAs');

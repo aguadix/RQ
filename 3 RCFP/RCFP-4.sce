@@ -1,5 +1,5 @@
 clear; clc;
-// RCFP-4
+// RCFP-4.sce
 // 4 A(g) => B(g) + 6 C(g)
 // Isotermo, isobárico
 // Estado estacionario
