@@ -2,6 +2,9 @@
 
 Reactores Químicos (Grado en Ingeniería Química)
 
+[Guía docente](http://grados.ugr.es/iquimica/pages/infoacademica/gd1718/rq1718)
+
+
 Código en [Scilab](http://www.scilab.org)
 
 1. RDMP: Reactor discontinuo mezcla perfecta
