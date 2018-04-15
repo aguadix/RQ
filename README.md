@@ -2,8 +2,6 @@
 
 Reactores Químicos (Grado en Ingeniería Química)
 
-[Guía Docente](http://grados.ugr.es/iquimica/pages/infoacademica/gd1718/rq1718)
-
 Código en [Scilab](http://www.scilab.org)
 
 1. RDMP: Reactor discontinuo mezcla perfecta
@@ -12,3 +10,5 @@ Código en [Scilab](http://www.scilab.org)
 4. RDMP-MULT: Reactor discontinuo mezcla perfecta con reacciones múltiples
 5. RCMP-MULT: Reactor continuo mezcla perfecta con reacciones múltiples
 6. SEMI: Reactor semicontinuo
+
+Carpeta de archivos en [Google Drive](https://drive.google.com/open?id=1YU3lfvY7HRdlSeeqGyyuNjekO433TEav)
