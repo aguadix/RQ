@@ -4,7 +4,6 @@ clear; clc;
 // Isotermo
 // Recirculación
 // Estado estacionario
-// https://files.acrobat.com/a/preview/29019fc4-c0bf-4efa-a7cf-7dbcba3f9ca4
 
 k = 1; // L/(mol*h)
 F = 5; // L/h 
