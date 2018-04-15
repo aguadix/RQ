@@ -11,4 +11,4 @@ Código en [Scilab](http://www.scilab.org)
 5. RCMP-MULT: Reactor continuo mezcla perfecta con reacciones múltiples
 6. SEMI: Reactor semicontinuo
 
-Carpeta de archivos en [Google Drive](https://drive.google.com/open?id=1YU3lfvY7HRdlSeeqGyyuNjekO433TEav)
+Carpeta de archivos en [Google Drive](https://drive.google.com/drive/folders/1YU3lfvY7HRdlSeeqGyyuNjekO433TEav?usp=sharing)
