@@ -37,4 +37,4 @@ end
 
 scf(1); clf(1); 
 plot(T, HG, T, HL);
-xgrid; xtitle('RCMP-4a','T','HG(azul), HL(verde)')
+xgrid; xtitle('RCMP-4a','T','HG(azul), HL(verde)');

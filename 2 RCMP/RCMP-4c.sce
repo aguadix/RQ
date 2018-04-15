@@ -38,12 +38,12 @@ T = x(2,:); Tee = T($)
 
 scf(1); 
 plot(t,CA);
-xgrid; xtitle('RCMP-4c','t','CA')
+xgrid; xtitle('RCMP-4c','t','CA');
 
 scf(2); 
 plot(t,T);
-xgrid; xtitle('RCMP-4c','t','T')
+xgrid; xtitle('RCMP-4c','t','T');
 
 scf(3);
 plot(T,CA,Tee,CAee,'ro');
-xgrid; xtitle('RCMP-4c','T','CA')
+xgrid; xtitle('RCMP-4c','T','CA');
