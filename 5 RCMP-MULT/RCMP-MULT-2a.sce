@@ -44,4 +44,4 @@ Tee = xee(5)
 
 scf(1);
 plot(T0,CCee,'ro');
-xgrid; xtitle('RCMP-MULT-2a','T0','CCee')
+xgrid; xtitle('RCMP-MULT-2a','T0','CCee');
