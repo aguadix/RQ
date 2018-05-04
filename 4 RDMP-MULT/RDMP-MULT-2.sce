@@ -36,7 +36,7 @@ function dxdt = f(t,x)
     dxdt(5) = U*A*(TJ-x(5))/(V*RHO*CP)
 endfunction
 
-c = 4;
+c = 1;
 select c
     case 1 then TJ1 = Tcold; TJ2 = Tcold; // K
     case 2 then TJ1 = Thot;  TJ2 = Thot;  // K
@@ -61,4 +61,4 @@ xgrid; xtitle('RDMP-MULT-2','t','T')
 
 scf(3);
 bar(c,[CAfin,CBfin,CCfin,CDfin],'stacked');
-xgrid; xtitle('RDMP-MULT-2','c','CAfin(azul), CBfin(verde), CCfin(rojo), CDfin(celeste)') 
+xgrid; xtitle('RDMP-MULT-2','c','CAfin(azul), CBfin(verde), CCfin(rojo), CDfin(celeste)'); 
