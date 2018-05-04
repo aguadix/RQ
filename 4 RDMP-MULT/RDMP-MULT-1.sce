@@ -46,4 +46,4 @@ tCDmax = t(indexCDmax)
 scf(1); clf(1); 
 plot(t,CA,t,CB,t,CC,t,CD);
 plot(tCAmax,CAmax,'ko',tCBmax,CBmax,'ko',tCCmax,CCmax,'ko',tCDmax,CDmax,'ko');
-xgrid; xtitle('RDMP-MULT-1','t','CA(azul), CB(verde), CC(rojo), CD(celeste)');
+xgrid; xtitle('RDMP-MULT-1','t','CA(azul), CB(verde), CC(rojo), CD(cian)');

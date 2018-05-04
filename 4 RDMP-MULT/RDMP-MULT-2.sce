@@ -53,7 +53,7 @@ T  = x(5,:); Tfin = T($)
 
 scf(1);clf(1);
 plot(t,CA,t,CB,t,CC,t,CD);
-xgrid; xtitle('RDMP-MULT-2','t','CA(azul),CB(verde),CC(rojo),CD(celeste)')
+xgrid; xtitle('RDMP-MULT-2','t','CA(azul),CB(verde),CC(rojo),CD(cian)')
 
 scf(2);clf(2);
 plot(t,T);
@@ -61,4 +61,4 @@ xgrid; xtitle('RDMP-MULT-2','t','T')
 
 scf(3);
 bar(c,[CAfin,CBfin,CCfin,CDfin],'stacked');
-xgrid; xtitle('RDMP-MULT-2','c','CAfin(azul), CBfin(verde), CCfin(rojo), CDfin(celeste)'); 
+xgrid; xtitle('RDMP-MULT-2','c','CAfin(azul), CBfin(verde), CCfin(rojo), CDfin(cian)'); 
