@@ -1,9 +1,8 @@
 clear; clc;
-// RCMP-MULT-1a
+// RCMP-MULT-1a.sce
 // 1) A + B => P
 // 2) P + B => Q
 // 2 reactores isotermos en serie 
-// https://files.acrobat.com/a/preview/f7245e03-48b9-4b4b-86a4-575f9a3b1937
 // Estado estacionario
 
 V1 = 1; V2 = 1; // L

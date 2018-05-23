@@ -1,5 +1,5 @@
 clear; clc;
-// SEMI-1
+// SEMI-1.sce
 // 1) A + B => P
 // 2) A + B => Q
 // Isotermo

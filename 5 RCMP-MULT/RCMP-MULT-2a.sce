@@ -1,5 +1,5 @@
 clear; clc;
-// RCMP-MULT-2a
+// RCMP-MULT-2a.sce
 // 1) A => B
 // 2) B => C
 // 3) B => D

@@ -1,5 +1,5 @@
 clear; clc;
-// SEMI-2
+// SEMI-2.sce
 // A + B => C
 // Adiabático
 // Dinámica
