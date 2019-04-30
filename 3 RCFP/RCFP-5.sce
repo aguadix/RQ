@@ -5,50 +5,59 @@ clear; clc;
 // Recirculación
 // Estado estacionario
 
+CA0 = 2.0; CB0 = 0.0; // mol/L
+x0 = [CA0;CB0]; 
+
 k = 1; // L/(mol*h)
 F = 5; // L/h 
-CA0 = 2.0; CB0 = 0.0; // mol/L
-V = 10; //L
-R = 0.1;
+Vtot = 10; //L
+R = 0.6;
 
-tautot = V/(F*(1+R)); dtau = 0.01; 
+tautot = Vtot/(F*(1+R)); dtau = 0.01; 
 tau = 0:dtau:tautot;
 
 function dxdtau = f(tau,x)
-    // RDMP
-    // dCA/dt = -CAini*dx/dt = -k*CA*CB =
-    //        = -k*(CAini-CAini*x)*(CBini+CAini*x)
-    // dx/dt = k*(1-x)*(CBini+CAini*x)
-    dxdtau = k*(1-x)*(CB0+CA0*x)    
+    r = k*x(1)*x(2)
+    dxdtau(1) = -r
+    dxdtau(2) =  r
 endfunction
 
 // Sustitución sucesiva
 
-XAsguess = 0.5;
 itermax = 50;
 tol = 1E-5;
 
+CAsguess = 1; CBsguess = 1;
+xsguess = [CAsguess;CBsguess];
+
 for iter = 1:itermax
-// F*CA0 + F*R*CAsguess = F*(1+R)*CAe
-// 1 + R*CAsguess/CA0 = (1+R)*CAe/CA0
-// 1 + R*(1-XAsguess) = (1+R)*(1-XAe)
-// 1 + R - R*XAsguess = 1 - XAe + R - R*XAe
-// -R*XAsguess = -XAe - R*XAe
-    XAe = R*XAsguess/(1+R);
-    XA = ode(XAe,0,tau,f);
-    XAs = XA($)
-    err = abs(XAs - XAsguess);
+
+    iter
+
+    // F*CA0 + F*R*CAsguess = F*(1+R)*CAe
+    // F*CB0 + F*R*CBsguess = F*(1+R)*CBe
+    xe = (x0+R*xsguess)/(1+R);
+
+    x = ode(xe,0,tau,f);
+    xs = x(:,$);
+
+    err = abs(xs - xsguess)
+
     if err < tol then 
         break
     else
-        XAsguess = XAs;
+        xsguess = xs
     end
+
 end
 
+CA = x(1,:); CAs = CA($)
+CB = x(2,:); CBs = CB($)
+
 scf(1); clf(1);  
-plot(tau,XA);
-xgrid; xtitle('RCFP-5','tau','XA');
+plot(tau,CA,tau,CB);
+xgrid; xtitle('RCFP-5','tau','CA (azul), CB (verde)');
 
 scf(2);  
-plot(R,XAs,'ro');
-xgrid; xtitle('RCFP-5','R','XAs');
+plot(R,CAs,'ro');
+xgrid; xtitle('RCFP-5','R','CAs');
