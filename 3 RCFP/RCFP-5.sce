@@ -11,7 +11,7 @@ x0 = [CA0;CB0];
 k = 1; // L/(mol*h)
 F = 5; // L/h 
 Vtot = 10; //L
-R = 0.6;
+R = 0.1;
 
 tautot = Vtot/(F*(1+R)); dtau = 0.01; 
 tau = 0:dtau:tautot;
