@@ -7,6 +7,7 @@ Reactores Químicos (Grado en Ingeniería Química)
 
 Código en [Scilab](http://www.scilab.org)
 
+0. INTRO: Sistemas de ecuaciones algebraicas y diferenciales
 1. RDMP: Reactor discontinuo mezcla perfecta
 2. RCMP: Reactor continuo mezcla perfecta
 3. RCFP: Reactor continuo flujo pistón
