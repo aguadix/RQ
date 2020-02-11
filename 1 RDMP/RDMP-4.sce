@@ -29,7 +29,7 @@ CAini = 5; CBini = 0; // mol/L
 xini = [CAini; CBini];
 
 // VECTOR DE TIEMPOS
-tfin = 80; dt=0.1; t = 0:dt:tfin; // h
+tfin = 80; dt = 0.1; t = 0:dt:tfin; // h
 
 // RESOLVER
 x = ode(xini,0,t,f);
