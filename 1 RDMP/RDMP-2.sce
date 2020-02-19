@@ -28,7 +28,7 @@ CAini = 0.5; // mol/L
 Tini = 285; // K
 xini = [CAini; Tini];
 
-// VECTOR DE TIEMPOS
+// TIEMPO
 tfin = 2000; dt = 1; t = 0:dt:tfin;// s
 
 // RESOLVER

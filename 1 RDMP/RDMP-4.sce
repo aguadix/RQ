@@ -28,7 +28,7 @@ Keq = Keq0*exp(-H/(R*T)) // L/mol
 CAini = 5; CBini = 0; // mol/L
 xini = [CAini; CBini];
 
-// VECTOR DE TIEMPOS
+// TIEMPO
 tfin = 80; dt = 0.1; t = 0:dt:tfin; // h
 
 // RESOLVER

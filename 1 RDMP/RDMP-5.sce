@@ -36,7 +36,7 @@ CAini = 1; CBini = 2; CPini = 0; // mol/L
 Tini = 300; // K
 xini = [CAini; CBini; CPini; Tini];
 
-// VECTOR DE TIEMPOS
+// TIEMPO
 tfin = 500; dt= 0.1; t = 0:dt:tfin; // h
 
 // RESOLVER

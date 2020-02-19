@@ -41,7 +41,7 @@ Tini = 283; // K
 TJini = 283; // K
 xini = [CAini; Tini; TJini];
 
-// VECTOR DE TIEMPOS
+// TIEMPO
 tfin = 1500; dt = 1; t = 0:dt:tfin; // s
 
 // RESOLVER

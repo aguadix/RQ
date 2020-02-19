@@ -31,7 +31,7 @@ CAini = 1; CBini = 0; // mol/L
 IntegralToptini = 0;
 xini = [CAini; CBini; IntegralToptini];
 
-// VECTOR DE TIEMPOS
+// TIEMPO
 tfin = 5; dt = 0.01; t = 0:dt:tfin; // h
 
 // RESOLVER

@@ -21,7 +21,7 @@ k = 0.5; // h-1
 CAini = 1; CBini = 0; // mol/L
 xini = [CAini;CBini];
 
-// VECTOR DE TIEMPOS
+// TIEMPO
 tfin = 10; dt = 0.01; t = 0:dt:tfin; // h
 
 // RESOLVER
