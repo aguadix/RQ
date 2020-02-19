@@ -13,7 +13,7 @@ xini = [1;0;0]  // Condiciones iniciales (valores a tiempo cero)
 dt = 0.1; tfin = 10; t = 0:dt:tfin;  // Vector de tiempo
 
 scf(1); clf(1);// Configura y limpia la ventana gráfica
-xgrid; xtitle('INTRO-2.','t','x'); // Cuadrícula y títulos
+xgrid; xtitle('INTRO-2','t','x'); // Cuadrícula y títulos
 
 
 // (a) MÉTODO DE EULER
@@ -27,7 +27,7 @@ end
 plot(t,x,'o');   // Gráfica
 
 
-// MÉTODO RK4
+// (b) MÉTODO RK4
 
 x(:,1) = xini;  // Colocar las condiciones iniciales en la primera columna
 
@@ -39,10 +39,10 @@ for i = 1:length(t)-1
   x(:,i+1) = x(:,i) + 1/6 * (k1+2*k2+2*k3+k4);  // Fórmula
 end
 
-plot(t,x,'.');   // Gráfica
+plot(t,x,'.'); // Gráfica
 
 
 // (c) FUNCIÓN DE SCILAB - ode
 
 x = ode(xini,0,t,f);
-plot(t,x,'-');
+plot(t,x,'-'); // Gráfica
