@@ -38,16 +38,16 @@ T = x(2,:); Tfin = T($)
 
 XA = 1 - CA/CAini;
 XAobj = 0.90;
-indexobj = find(XA>XAobj,1);
-tobj = t(indexobj)
-CAobj = CA(indexobj)
-Tobj = T(indexobj)
+indeXAobj = find(XA>XAobj,1);
+tXAobj = t(indeXAobj)
+CAXAobj = CA(indeXAobj)
+TXAobj = T(indeXAobj)
 
 // GRÁFICAS
 scf(1); clf(1); 
-plot(t,CA,tobj,CAobj,'ro');
+plot(t,CA,tXAobj,CAXAobj,'ro');
 xgrid; xtitle('RDMP-2','t','CA');
 
 scf(2); clf(2); 
-plot(t,T,tobj,Tobj,'ro');
+plot(t,T,tXAobj,TXAobj,'ro');
 xgrid; xtitle('RDMP-2','t','T');

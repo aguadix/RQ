@@ -39,11 +39,11 @@ CA = x(1,:); CAeq = CA($)
 CB = x(2,:); CBeq = CB($)
 XA = 1 - CA/CAini; XAeq = XA($)
 
-indexCBCA = find(CB>CA,1);
-tCBCA = t(indexCBCA)
-CACBCA = CA(indexCBCA)
+indexCACB = find(CA<CB,1);
+tCACB = t(indexCACB)
+CACACB = CA(indexCACB)
 
 // GRÁFICAS
 scf(1); clf(1); 
-plot(t,CA,t,CB,tCBCA,CACBCA,'ro');
+plot(t,CA,t,CB,tCACB,CACACB,'ro');
 xgrid; xtitle('RDMP-4','t','CA(azul), CB(verde)');

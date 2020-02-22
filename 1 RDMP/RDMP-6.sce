@@ -44,16 +44,16 @@ end
 
 Topt = dxdt(3,:); Toptfin = Topt($)
 
-indexTnomax = find(Topt<Tmax,1);
-tTnomax = t(indexTnomax)
-XATnomax = XA(indexTnomax)
-ToptTnomax = Topt(indexTnomax)
+indexToptTmax = find(Topt<Tmax,1);
+tToptTmax = t(indexToptTmax)
+XAToptTmax = XA(indexToptTmax)
+ToptTmax = Topt(indexToptTmax)
 
 // GRÁFICAS
 scf(1); clf(1); 
-plot(t,XA,tTnomax,XATnomax,'ro');
+plot(t,XA,tToptTmax,XAToptTmax,'ro');
 xgrid; xtitle('RDMP-6','t','XA');
 
 scf(2); clf(2); 
-plot(t,Topt,tTnomax,ToptTnomax,'ro');
+plot(t,Topt,tToptTmax,ToptTmax,'ro');
 xgrid; xtitle('RDMP-6','t','Topt');
