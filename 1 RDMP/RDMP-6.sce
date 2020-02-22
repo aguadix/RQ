@@ -16,8 +16,8 @@ function dxdt = f(t,x)
     CA = x(1)
     CB = x(2)
     r = kd*CA - ki*CB
-    [rmax,index] = max(r)
-    Topt = T(index)
+    [rmax,indexTopt] = max(r)
+    Topt = T(indexTopt)
     dCAdt = -rmax   // Balance de materia para A
     dCBdt =  rmax   // Balance de materia para B
     dxdt(1) = dCAdt
@@ -44,16 +44,16 @@ end
 
 Topt = dxdt(3,:); Toptfin = Topt($)
 
-indexTmax = find(Topt<Tmax,1);
-tTmax = t(indexTmax)
-XATmax = XA(indexTmax)
-ToptTmax = Topt(indexTmax)
+indexTnomax = find(Topt<Tmax,1);
+tTnomax = t(indexTnomax)
+XATnomax = XA(indexTnomax)
+ToptTnomax = Topt(indexTnomax)
 
 // GRÁFICAS
 scf(1); clf(1); 
-plot(t,XA,tTmax,XATmax,'ro');
+plot(t,XA,tTnomax,XATnomax,'ro');
 xgrid; xtitle('RDMP-6','t','XA');
 
 scf(2); clf(2); 
-plot(t,Topt,tTmax,ToptTmax,'ro');
+plot(t,Topt,tTnomax,ToptTnomax,'ro');
 xgrid; xtitle('RDMP-6','t','Topt');
