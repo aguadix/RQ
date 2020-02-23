@@ -6,6 +6,7 @@ Reactores Químicos (2019-2020)
 
 [Guía docente](http://grados.ugr.es/iquimica/pages/infoacademica/gd1920/rq1920)
 
+[Formulario de asistencia](https://docs.google.com/forms/d/e/1FAIpQLSeGuVjwPysHE2IftUtXyUzrQk0d6xcuCEu2375SL2asZg_bVw/viewform)
 
 Código en [Scilab](http://www.scilab.org)
 
