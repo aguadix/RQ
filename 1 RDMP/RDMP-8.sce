@@ -51,6 +51,7 @@ CA = NA ./ V; CAeq = CA($)
 CB = NB ./ V; CBeq = CB($) 
 CC = NC ./ V; CCeq = CC($) 
 
+// GRÁFICAS
 scf(1); clf(1); 
 plot(t,V);
 xgrid; xtitle('RDMP-8','t','V');
