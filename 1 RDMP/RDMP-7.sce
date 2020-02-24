@@ -5,15 +5,23 @@ clear; clc;
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
+    // Variables diferenciales
     NA = x(1)
     NB  = x(2)
+    // Moles totales
     N = NA + NB
+    // Gas ideal
     V = N*R*T/P
+    // Concentraciones
     CA = NA/V
     CB = NB/V
+    // Velocidad de reacción
     r = k*CA    
-    dNAdt = -r*V   // Balance de materia para A
-    dNBdt = 2*r*V  // Balance de materia para B
+    // Balance de materia para A
+    dNAdt = -r*V   
+    // Balance de materia para B
+    dNBdt = 2*r*V  
+    // Derivadas
     dxdt(1) = dNAdt
     dxdt(2) = dNBdt
 endfunction

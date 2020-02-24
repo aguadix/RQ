@@ -5,11 +5,18 @@ clear; clc;
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
+    // Variables diferenciales
     CA = x(1)
     CB = x(2)
+    // Velocidad de reacción
     r = kd*(CA^2 - CB/Keq)
-    dCAdt = -r   // Balance de materia para A
-    dCBdt = r/2  // Balance de materia para B
+    // Balance de materia para A
+    // d(V*CA)dt = -r*V
+    dCAdt = -r 
+    // Balance de materia para B
+    // d(V*CB)dt = r/2*V
+    dCBdt = r/2
+    // Derivadas
     dxdt(1) = dCAdt
     dxdt(2) = dCBdt
 endfunction
@@ -21,8 +28,8 @@ E = 105000; // J/mol
 Keq0 = 6.9E8; // L/mol
 H = 63000; // J/mol
 R = 8.314; // J/(mol*K)
-kd = kd0*exp(-E/(R*T)) // L/(mol*h)
-Keq = Keq0*exp(-H/(R*T)) // L/mol
+kd = kd0*exp(-E/(R*T))   // Ecuación de Arrhenius
+Keq = Keq0*exp(-H/(R*T)) // Ecuación de Van't Hoff
 
 // CONDICIONES INICIALES
 CAini = 5; CBini = 0; // mol/L
@@ -33,7 +40,7 @@ tfin = 80; dt = 0.1; t = 0:dt:tfin; // h
 
 // RESOLVER
 x = ode(xini,0,t,f);
-f(tfin,x(:,$)) < 1E-5  // Equilibrio?
+Equilibrio = f(tfin,x(:,$)) < 1E-5
 
 CA = x(1,:); CAeq = CA($)
 CB = x(2,:); CBeq = CB($)

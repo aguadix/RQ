@@ -5,12 +5,20 @@ clear; clc;
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
+    // Variables diferenciales
     CA = x(1)
     T  = x(2)
+    // Ecuación de Arrhenius
     k = k0*exp(-E/(R*T))
+    // Velocidad de reacción
     r = k*CA
-    dCAdt = -r              // Balance de materia para A
-    dTdt  = -H*r/(RHO*CP)   // Balance de energía
+    // Balance de materia para A
+    // d(V*CA)dt = -r*V
+    dCAdt = -r              
+    // Balance de energía
+    // d(V*RHO*CP*T)dt = -H*r*V
+    dTdt  = -H*r/(RHO*CP)   
+    // Derivadas
     dxdt(1) = dCAdt
     dxdt(2) = dTdt
 endfunction

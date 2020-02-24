@@ -3,34 +3,38 @@ clear; clc;
 // A => B
 // No adiabático: serpentín
 
+// SECTORES
+N = 10; // divisiones del serpentín
+
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
-
+    // Variables diferenciales
     Ts = x(1:N)
     CA = x(N+1)
     T  = x(N+2)
-
+    // Calor transferido del reactor al serpentín
     i = 1:N; Q(i) = U*As*(T-Ts(i))
-
-    // Balance de energía en el serpentín (sector 1)
+    // Balance de energía en el serpentín
+    // d(Vs*RHOs*CPs*Ts)dt =  Fs*RHOs*CPs*(Ts0-Ts) + Q
+    // Sector 1
     dTsdt(1) = Fs*(Ts0-Ts(1))/Vs + Q(1)/(Vs*RHOs*CPs)
-
-    // Balance de energía en el serpentín (resto de sectores)
+    // Resto de sectores
     i = 2:N; dTsdt(i) = Fs*(Ts(i-1)-Ts(i))/Vs + Q(i)/(Vs*RHOs*CPs)
-
+    // Ecuación de Arrhenius
     k = k0*exp(-E/(R*T))
+    // Velocidad de reacción
     r = k*CA
-    dCAdt = -r  // Balance de materia para A
-    dTdt  = -H*r/(RHO*CP) - sum(Q)/(V*RHO*CP)  // Balance de energía en el reactor
-
+    // Balance de materia para A
+    // d(V*CA)dt = -r*V
+    dCAdt = -r  
+    // Balance de energía en el reactor
+    // d(V*RHO*CP*T)dt = -H*r*V - Q
+    dTdt  = -H*r/(RHO*CP) - sum(Q)/(V*RHO*CP)  
+    // Derivadas
     dxdt(1:N) = dTsdt
     dxdt(N+1) = dCAdt
     dxdt(N+2) = dTdt
-
 endfunction
-
-// SECTORES
-N = 10; // divisiones del serpentín
 
 // CONSTANTES
 V = 1; // m3
@@ -39,11 +43,11 @@ CP = 4200; //J/(kg*K)
 
 U = 400; // J/(m2*s*K)
 Ds = 0.1; // m
-Ls = 13; // m
-Vst = %pi/4*Ds^2*Ls // m3
-Ast = %pi*Ds*Ls  // m2
-Vs = Vst/N  // m3
-As = Ast/N  // m2
+Lstot = 13; // m
+Vstot = %pi/4*Ds^2*Lstot // m3
+Astot = %pi*Ds*Lstot  // m2
+Vs = Vstot/N  // m3
+As = Astot/N  // m2
 Fs = 1E-3; //m3/s
 Ts0 = 283; // K
 RHOs = 1000; // kg/m3

@@ -5,11 +5,18 @@ clear; clc;
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
+    // Variables diferenciales
     CA = x(1)
     CB = x(2)
+    // Velocidad de reacción
     r = k*CA
-    dCAdt = -r    // Balance de materia para A
-    dCBdt =  r    // Balance de materia para B
+    // Balance de materia para A
+    // d(V*CA)dt = -r*V
+    dCAdt = -r
+    // d(V*CB)dt = r*V
+    // Balance de materia para B
+    dCBdt =  r
+    // Derivadas
     dxdt(1) = dCAdt
     dxdt(2) = dCBdt
 endfunction
