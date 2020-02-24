@@ -24,7 +24,7 @@ function dxdt = f(t,x)
     Topt = T(indexTopt)
     // Balance de materia para A
     // d(V*CA)dt = -rmax*V
-    CAdt = -rmax   
+    dCAdt = -rmax   
     // Balance de materia para B
     // d(V*CB)dt = rmax*V
     dCBdt =  rmax   
