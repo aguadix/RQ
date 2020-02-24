@@ -44,7 +44,7 @@ tfin = 5; dt = 0.01; t = 0:dt:tfin; // h
 // RESOLVER
 x = ode(xini,0,t,f);
 CA = x(1,:); CAfin = CA($)
-CP = x(2,:); CPfin = CP($)
+CB = x(2,:); CBfin = CB($)
 XA = 1 - CA/CAini; XAfin = XA($)
 
 for i = 1:length(t)
