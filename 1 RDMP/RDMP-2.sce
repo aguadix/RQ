@@ -46,10 +46,10 @@ T = x(2,:); Tfin = T($)
 
 XA = 1 - CA/CAini;
 XAobj = 0.90;
-indeXAobj = find(XA>XAobj,1);
-tXAobj = t(indeXAobj)
-CAXAobj = CA(indeXAobj)
-TXAobj = T(indeXAobj)
+indexXAobj = find(XA>XAobj,1);
+tXAobj = t(indexXAobj)
+CAXAobj = CA(indexXAobj)
+TXAobj = T(indexXAobj)
 
 // GRÁFICAS
 scf(1); clf(1); 
