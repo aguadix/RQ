@@ -37,7 +37,7 @@ Tini = 285; // K
 xini = [CAini; Tini];
 
 // TIEMPO
-tfin = 2000; dt = 1; t = 0:dt:tfin;// s
+tfin = 1000; dt = 1; t = 0:dt:tfin;// s
 
 // RESOLVER
 x = ode(xini,0,t,f);
