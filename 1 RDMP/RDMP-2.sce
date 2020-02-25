@@ -44,7 +44,7 @@ x = ode(xini,0,t,f);
 CA = x(1,:); CAfin = CA($)
 T = x(2,:); Tfin = T($)
 
-XA = 1 - CA/CAini;
+XA = 1 - CA/CAini; XAfin = XA($)
 XAobj = 0.90;
 indexXAobj = find(XA>XAobj,1);
 tXAobj = t(indexXAobj)
