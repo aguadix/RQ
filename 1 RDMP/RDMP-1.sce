@@ -13,8 +13,8 @@ function dxdt = f(t,x)
     // Balance de materia para A
     // d(V*CA)dt = -r*V
     dCAdt = -r
-    // d(V*CB)dt = r*V
     // Balance de materia para B
+    // d(V*CB)dt = r*V
     dCBdt =  r
     // Derivadas
     dxdt(1) = dCAdt
@@ -29,14 +29,14 @@ CAini = 1; CBini = 0; // mol/L
 xini = [CAini;CBini];
 
 // TIEMPO
-tfin = 10; dt = 0.01; t = 0:dt:tfin; // h
+tfin = 5; dt = 0.01; t = 0:dt:tfin; // h
 
 // RESOLVER
 x = ode(xini,0,t,f);
 CA = x(1,:); CAfin = CA($)
 CB = x(2,:); CBfin = CB($)
 
-XA = 1 - CA/CAini;
+XA = 1 - CA/CAini; XAfin = XA($)
 
 // GRÁFICAS
 scf(1); clf(1); 
