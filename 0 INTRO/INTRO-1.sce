@@ -7,6 +7,7 @@ function y = f(x)
   y(2) = x(1)^2 - x(2)
 endfunction
 
+// Jacobiano
 function dfdx = J(x)
   dfdx(1,1) = 2*x(1) 
   dfdx(1,2) = 2*x(2)
