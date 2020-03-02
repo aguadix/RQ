@@ -7,14 +7,6 @@ function y = f(x)
   y(2) = x(1)^2 - x(2)
 endfunction
 
-// Jacobiano
-function dfdx = J(x)
-  dfdx(1,1) = 2*x(1) 
-  dfdx(1,2) = 2*x(2)
-  dfdx(2,1) = 2*x(1)
-  dfdx(2,2) = -1
-endfunction
-
 scf(1); clf(1);// Configura y limpia la ventana gráfica
 xgrid; xtitle('INTRO-1','x1','x2'); // Cuadrícula y títulos
 
@@ -26,9 +18,18 @@ plot(xguess(1),xguess(2),'ro');
 
 
 // (a) MÉTODO DE NEWTON
+
+function dfdx = J(x)   // Jacobiano
+  dfdx(1,1) = 2*x(1) 
+  dfdx(1,2) = 2*x(2)
+  dfdx(2,1) = 2*x(1)
+  dfdx(2,2) = -1
+endfunction
+
 x = xguess; // Solución de partida
 imax = 50;  // Número máximo de iteraciones
 tol = 1E-6; // Tolerancia
+
 
 for i = 1:imax
   i
