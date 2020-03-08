@@ -22,7 +22,7 @@ function dxdt = f(t,x)
     // d(V*RHO*CP*T)dt = -H*r*V - Q
     dTdt  = -H*r/(RHO*CP)  - Q/(V*RHO*CP)
     // Balance de energía en la camisa
-    // d(VJ*RHOJ*CPJ*TJ)dt =  FJ*RHOJ*CPJ*(TJ0-TJ) + Q
+    // d(VJ*RHOJ*CPJ*TJ)dt =  FJ*RHOJ*CPJ*TJ0 - FJ*RHOJ*CPJ*TJ + Q
     dTJdt = FJ*(TJ0-TJ)/VJ + Q/(VJ*RHOJ*CPJ)  
     // Derivadas
     dxdt(1) = dCAdt

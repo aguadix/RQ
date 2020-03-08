@@ -4,26 +4,49 @@ clear; clc;
 // Isotermo
 // Dinámica
 
-F = 1; // L/h
-CA0 = 1; // mol/L
-V = 10; // L
-k = 0.1; // 1/h
-
-CAini = 1; // mol/L
-xini = CAini;
-
-tfin = 50; dt = 0.01; // h
-t = 0:dt:tfin;
-
+// SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
-     r = k*x
-     dxdt = F*(CA0-x)/V - r
+    // Variables diferenciales
+    CA = x(1)
+    CB = x(2)
+    // Velocidad de reacción
+    r = k*CA
+    // Balance de materia para A
+    // d(V*CA)dt = F*CA0 - F*CA - r*V
+    dCAdt = F*(CA0-CA)/V - r
+    // Balance de materia para B
+    // d(V*CB)dt = F*CB0 - F*CB + r*V
+    dCBdt = F*(CB0-CB)/V + r
+    // Derivadas
+    dxdt(1) = dCAdt
+    dxdt(2) = dCBdt
 endfunction
- 
+
+// CONSTANTES
+F = 1; // L/h
+CA0 = 1; CB0 = 0; // mol/L
+V = 10; // L
+k = 1; // 1/h
+
+// CONDICIONES INICIALES
+CAini = 0; CBini = 0; // mol/L
+xini = [CAini;CBini];
+
+// TIEMPO
+tfin = 100; dt = 0.1; t = 0:dt:tfin; // h
+
+// RESOLVER
 x = ode(xini,0,t,f);
-CA = x; CAee = CA($)
+Estacionario = f(tfin,x(:,$)) < 1E-5
+CA = x(1,:); CAee = CA($)
+CB = x(2,:); CBee = CB($)
 XA = 1 - CA/CA0; XAee = XA($)
 
-scf(1); //clf(1);
-plot(t,CA);
-xgrid; xtitle('RCMP-1b', 't', 'CA');
+// GRÁFICAS
+scf(1); clf(1);
+plot(t,CA,t,CB);
+xgrid; xtitle('RCMP-1b', 't', 'CA(azul), CB(verde)');
+
+scf(2); clf(2);
+plot(t,XA);
+xgrid; xtitle('RCMP-1b', 't', 'XA');

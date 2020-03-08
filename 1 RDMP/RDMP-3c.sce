@@ -15,7 +15,7 @@ function dxdt = f(t,x)
     // Calor transferido del reactor al serpentín
     i = 1:N; Q(i) = U*As*(T-Ts(i))
     // Balance de energía en el serpentín
-    // d(Vs*RHOs*CPs*Ts)dt =  Fs*RHOs*CPs*(Ts0-Ts) + Q
+    // d(Vs*RHOs*CPs*Ts)dt =  Fs*RHOs*CPs*Ts0 - Fs*RHOs*CPs*Ts + Q
     // Sector 1
     dTsdt(1) = Fs*(Ts0-Ts(1))/Vs + Q(1)/(Vs*RHOs*CPs)
     // Resto de sectores

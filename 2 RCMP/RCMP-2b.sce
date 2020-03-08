@@ -1,34 +1,53 @@
 clear; clc;
 // RCMP-2b.sce
-// A + B <=> P
+// A + B <=> C
 // Isotermo
 // Dinámica
 
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = f(t,x)
+    // Variables diferenciales
+    CA = x(1)
+    CB = x(2)
+    CC = x(3)
+    // Velocidad de reacción
+    r = kd*(CA*CB - CC/Keq)
+    // Balance de materia para A
+    // d(V*CA)dt = F*CA0 - F*CA - r*V
+    dCAdt = F*(CA0-CA)/V - r
+    // Balance de materia para B
+    // d(V*CB)dt = F*CB0 - F*CB - r*V
+    dCBdt = F*(CB0-CB)/V - r
+    // Balance de materia para C
+    // d(V*CC)dt = F*CC0 - F*CC + r*V
+    dCCdt = F*(CC0-CC)/V + r
+    // Derivadas
+    dxdt(1) = dCAdt
+    dxdt(2) = dCBdt
+    dxdt(3) = dCCdt
+endfunction
+
+// CONSTANTES
 F = 10; // L/min
-CA0 = 1; CB0 = 1.5; CP0 = 0; // mol/L
+CA0 = 1; CB0 = 1.5; CC0 = 0; // mol/L
 V = 150; // L
 kd = 0.1; // L/(mol*min)
 Keq = 10; // L/mol
 
+// CONDICIONES INICIALES
 CAini = 0; CBini = 0; CPini = 0; // mol/L
 xini = [CAini; CBini; CPini];
 
-tfin = 200; dt = 0.5; // min
-t = 0:dt:tfin;
+// TIEMPO
+tfin = 200; dt = 0.5; t = 0:dt:tfin; // min
 
-function dxdt = f(t,x)
-    r = kd*(x(1)*x(2) - x(3)/Keq)
-    dxdt(1) = F*(CA0-x(1))/V - r
-    dxdt(2) = F*(CB0-x(2))/V - r
-    dxdt(3) = F*(CP0-x(3))/V + r
-endfunction
- 
+// RESOLVER
 x = ode(xini,0,t,f);
+Estacionario = f(tfin,x(:,$)) < 1E-5
 CA = x(1,:); CAee = CA($)
 CB = x(2,:); CBee = CB($) 
-CP = x(3,:); CPee = CP($)
-XA = 1-CA/CA0; XAee = XA($)
+CC = x(3,:); CPee = CC($)
 
 scf(1); clf(1);
-plot(t,CA,t,CB,t,CP);
-xgrid; xtitle('RCMP-2b', 't', 'CA(azul), CB(verde), CP(rojo)');
+plot(t,CA,t,CB,t,CC);
+xgrid; xtitle('RCMP-2b', 't', 'CA(azul), CB(verde), CB(rojo)');
