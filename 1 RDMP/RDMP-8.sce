@@ -48,7 +48,7 @@ tfin = 1.5; dt = 0.001; t = 0:dt:tfin; // h
 
 // RESOLVER
 x = ode(xini,0,t,f);
-Equilibrio = f(tfin,x(:,$)) < 1E-5
+Equilibrio =abs(f(tfin,x(:,$))) < 1E-5
 NA = x(1,:); NAeq = NA($)
 NB = x(2,:); NBeq = NB($)
 NC = x(3,:); NCeq = NC($)
