@@ -40,7 +40,9 @@ tfin = 80; dt = 0.1; t = 0:dt:tfin; // h
 
 // RESOLVER
 x = ode(xini,0,t,f);
-Equilibrio = abs(f(tfin,x(:,$))) < 1E-5
+xfin = x(:,$)
+dxdtfin = f(tfin,xfin)
+Equilibrio = abs(dxdtfin ./ xfin) < 1E-5
 
 CA = x(1,:); CAeq = CA($)
 CB = x(2,:); CBeq = CB($)
