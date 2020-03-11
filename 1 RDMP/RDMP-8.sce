@@ -48,13 +48,17 @@ tfin = 1.5; dt = 0.001; t = 0:dt:tfin; // h
 
 // RESOLVER
 x = ode(xini,0,t,f);
-Equilibrio =abs(f(tfin,x(:,$))) < 1E-5
+xfin = x(:,$)
+dxdtfin = f(tfin,xfin)
+Equilibrio = abs(dxdtfin ./ xfin) < 1E-5
+
+
 NA = x(1,:); NAeq = NA($)
 NB = x(2,:); NBeq = NB($)
 NC = x(3,:); NCeq = NC($)
 XA = 1 - NA/NAini; XAeq = XA($)
 
-N = NA+NB+NC+NI; Neq = N($)
+N = NA + NB + NC + NI; Neq = N($)
 V = N*R*T/P; Veq = V($)
 CA = NA ./ V; CAeq = CA($) 
 CB = NB ./ V; CBeq = CB($) 

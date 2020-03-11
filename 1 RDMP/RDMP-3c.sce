@@ -83,7 +83,7 @@ plot(t,T,t,Ts);
 xgrid; xtitle('RDMP-3c','t','T(azul), Ts(sectores)');
 
 scf(3); clf(3);
-plot(Tsini,'ro-');   // Inicial
+plot(Tsini,'ro-');      // Inicial
 plot(Ts(:,$/2),'ro-');  // Intermedia
-plot(Tsfin,'ro-');  // Final
+plot(Tsfin,'ro-');      // Final
 xgrid; xtitle('RDMP-3c','Sector','Ts inicial, intermedia y final');
