@@ -25,28 +25,26 @@ endfunction
 // CONSTANTES
 F = 1; // L/h
 CA0 = 1; CB0 = 0; // mol/L
-V = 10; // L
+V = 15; // L
 k = 1; // 1/h
 
 // CONDICIONES INICIALES
-CAini = 0; CBini = 0; // mol/L
+CAini = 1; CBini = 0; // mol/L
 xini = [CAini;CBini];
 
 // TIEMPO
-tfin = 100; dt = 0.1; t = 0:dt:tfin; // h
+tfin = 20; dt = 0.1; t = 0:dt:tfin; // h
 
 // RESOLVER
 x = ode(xini,0,t,f);
-Estacionario = f(tfin,x(:,$)) < 1E-5
+xfin = x(:,$)
+dxdtfin = f(tfin,xfin)
+Estacionario = abs(dxdtfin ./ xfin) < 1E-5
+    
 CA = x(1,:); CAee = CA($)
 CB = x(2,:); CBee = CB($)
-XA = 1 - CA/CA0; XAee = XA($)
 
 // GRÁFICAS
 scf(1); clf(1);
 plot(t,CA,t,CB);
 xgrid; xtitle('RCMP-1b', 't', 'CA(azul), CB(verde)');
-
-scf(2); clf(2);
-plot(t,XA);
-xgrid; xtitle('RCMP-1b', 't', 'XA');

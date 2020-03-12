@@ -1,11 +1,11 @@
 clear; clc;
-// RCMP-3b.sce
+// RCMP-3c.sce
 // A => B
 // No adiabático
-// Estado estacionario
+// Dinámica
 
-// SISTEMA DE ECUACIONES ALGEBRAICAS
-function dxdt = f(x)
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = f(t,x)
     // Variables
     CA = x(1)
     T  = x(2)
@@ -40,20 +40,24 @@ k0 = 2.5E10; // 1/s
 R = 1.987; // cal/(mol*K)
 E = 2.1E4; // cal/mol
 
-// SOLUCIÓN SUPUESTA
-CAeeguess = 2.5; // mol/L
-Teeguess = 293; // K
-xeeguess = [CAeeguess; Teeguess];
+// CAMPO VECTORIAL
+CAmin = 0; dCA = 0.2; CAmax = 3;
+Tmin = 280; dT = 10; Tmax = 500;
+fchamp(f,0,CAmin:dCA:CAmax,Tmin:dT:Tmax);
+
+// CONDICIONES INICIALES
+CAini = 0; // mol/L
+Tini = 280; // K
+xini = [CAini; Tini];
+
+// TIEMPO
+tfin = 1000; dt = 1; t = 0:dt:tfin; // s
 
 // RESOLVER
-[xee,v,info] = fsolve(xeeguess,f)
-CAee = xee(1)
-Tee = xee(2)
+x = ode(xini,0,t,f);
+CA = x(1,:); CAee = CA($)
+T = x(2,:); Tee = T($)
 
-// GRÁFICAS
-plot(CAee,Tee,'rx');
-
-// ESTABILIDAD DE LOS ESTADOS ESTACIONARIOS
-J = numderivative(f,xee)  // Jacobiano
-lambda = spec(J)  // Valores propios
-Estable = real(lambda) < 0
+// TRAYECTORIA
+plot(CA,T,'o');
+mtlb_axis([CAmin CAmax Tmin Tmax]);

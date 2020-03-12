@@ -4,58 +4,21 @@ clear; clc;
 // No adiabático
 // Estado estacionario
 
-// SISTEMA DE ECUACIONES ALGEBRAICAS
-function dxdt = f(x)
-    // Variables
-    CA = x(1)
-    T  = x(2)
-    // Ecuación de Arrhenius
-    k = k0*exp(-E/(R*T))
-    // Velocidad de reacción
-    r = k*CA
-    // Calor transferido del reactor a la camisa
-    Q = UA*(T-TJ)
-    // Balance de materia para A
-    //d(V*CA)dt = F*CA0 - F*CA - r*V
-    dCAdt = F*(CA0-CA)/V - r
-    // Balance de energía
-    // d(V*RHO*CP*T)dt = F*RHO*CP*T0 - F*RHO*CP*T -H*r*V - Q
-    dTdt = F*(T0-T)/V - H*r/(RHO*CP) - Q/(V*RHO*CP) 
-    // Derivadas
-    dxdt(1) = dCAdt
-    dxdt(2) = dTdt
-endfunction
-
 // CONSTANTES
 CP = 0.8; // cal/(g*K)
 RHO = 1000; // g/L
 F = 20; // L/s
 V = 1500; // L
-UA = 10000; // cal/(K*s)
-H = -80000; // cal/mol
+UA = 1E4; // cal/(K*s)
+H = -8E4; // cal/mol
 T0 = 293; // K
 TJ = 283; // K
 CA0 = 2.5; // mol/L
 k0 = 2.5E10; // 1/s
 R = 1.987; // cal/(mol*K)
-E = 21000; // cal/mol
+E = 2.1E4; // cal/mol
 
-// SOLUCIÓN SUPUESTA
-CAeeguess = 2.5; // mol/L
-Teeguess = 293; // K
-xeeguess = [CAeeguess; Teeguess];
-
-// RESOLVER
-[xee,v,info] = fsolve(xeeguess,f)
-CAee = xee(1)
-Tee = xee(2)
-
-// ESTABILIDAD DE LOS ESTADOS ESTACIONARIOS
-J = numderivative(f,xee)  // Jacobiano
-lambda = spec(J)  // Valores propios
-Estable = real(lambda) < 0
-
-// GRÁFICAS
+// BALANCES 
 CAmin = 0; dCA = 0.1; CAmax = 3;
 Tmin = 280; dT = 0.1; Tmax = 500;
 
@@ -71,12 +34,13 @@ Q = UA*(T-TJ);
 // F*RHO*CP*(T0-T) - Q = H*k*CA*V
 CAbe = (F*RHO*CP*(T0-T) - Q)./(H*k*V); 
 
+// GRÁFICAS
 scf(1); clf(1);
 plot(CAbm,T,'g',CAbe,T,'r');
-xtitle('RCMP-3a','CA','T');
+xtitle('RCMP-3','CA','T');
 mtlb_axis([CAmin CAmax Tmin Tmax]);
 
-// Localización de estados estacionarios
+// LOCALIZACIÓN DE ESTADOS ESTACIONARIOS
 Nee = 0;
 for i = 1:length(T)-1
     if sign(CAbm(i)-CAbe(i)) <> sign(CAbm(i+1)-CAbe(i+1)) then
@@ -86,5 +50,3 @@ for i = 1:length(T)-1
         plot(CAeeg,Teeg,'ro');
     end
 end
-
-plot(CAee,Tee,'rx');

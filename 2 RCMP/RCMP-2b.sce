@@ -39,11 +39,14 @@ CAini = 0; CBini = 0; CPini = 0; // mol/L
 xini = [CAini; CBini; CPini];
 
 // TIEMPO
-tfin = 200; dt = 0.5; t = 0:dt:tfin; // min
+tfin = 150; dt = 0.5; t = 0:dt:tfin; // min
 
 // RESOLVER
 x = ode(xini,0,t,f);
-Estacionario = f(tfin,x(:,$)) < 1E-5
+xfin = x(:,$)
+dxdtfin = f(tfin,xfin)
+Estacionario = abs(dxdtfin ./ xfin) < 1E-5
+
 CA = x(1,:); CAee = CA($)
 CB = x(2,:); CBee = CB($) 
 CC = x(3,:); CPee = CC($)

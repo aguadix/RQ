@@ -50,20 +50,26 @@ Tini = 300; // K
 xini = [CAini; CBini; CPini; Tini];
 
 // TIEMPO
-tfin = 500; dt= 0.1; t = 0:dt:tfin; // h
+dt= 0.1;
+for tfin = 100:100:5000
+    t = 0:dt:tfin; // h
 
-// RESOLVER
-x = ode(xini,0,t,f);
-xfin = x(:,$)
-dxdtfin = f(tfin,xfin)
-Equilibrio = abs(dxdtfin ./ xfin) < 1E-5
+    // RESOLVER
+    x = ode(xini,0,t,f);
+    xfin = x(:,$)
+    dxdtfin = f(tfin,xfin)
+    Equilibrio = abs(dxdtfin ./ xfin) < 1E-5
+    if Equilibrio then
+        break
+    end
+end
 
 CA = x(1,:); CAeq = CA($)
 CB = x(2,:); CBeq = CB($)
 CC = x(3,:); CCeq = CC($)
 T  = x(4,:); Teq  = T($)
-
 XA = 1 - CA/CAini; XAeq = XA($)
+
 XAobj = 0.5;
 indexXAobj = find(XA>XAobj,1);
 tXAobj = t(indexXAobj)
@@ -82,5 +88,7 @@ plot(Tini,XAeq,'ro');
 xgrid; xtitle('RDMP-5','Tini','XAeq');
 
 scf(4);  
-plot(Tini,tXAobj,'ro');
+if XAeq > 0.5 then
+    plot(Tini,tXAobj,'ro');
+end
 xgrid; xtitle('RDMP-5','Tini','tXAobj');

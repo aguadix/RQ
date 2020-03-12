@@ -25,7 +25,7 @@ endfunction
 // CONSTANTES
 F = 1; // L/h
 CA0 = 1; CB0 = 0; // mol/L
-V = 10; // L
+V = 15; // L
 k = 1; // 1/h
 
 // SOLUCIÓN SUPUESTA
@@ -36,4 +36,3 @@ xeeguess = [CAeeguess;CBeeguess];
 [xee,fxee,info] = fsolve(xeeguess,f)
 CAee = xee(1)
 CBee = xee(2)
-XAee = 1 - CAee/CA0
