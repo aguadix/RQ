@@ -3,20 +3,13 @@ clear; clc;
 // A <=> B
 // Progresión óptima de temperatura
 
-// CONSTANTES
-kd0 = 1.94E15; ki0 = 6.26E19; // h-1
-Ed = 44500; Ei = 59500; // cal/mol
-R = 1.987; // cal/(mol*K)
-Tmin = 500; dT = 0.1; Tmax = 650; T = Tmin:dT:Tmax; // K
-kd = kd0*exp(-Ed./(R*T)); // Ecuación de Arrhenius directa
-ki = ki0*exp(-Ei./(R*T)); // Ecuación de Arrhenius inversa
-
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
     // Variables diferenciales
     CA = x(1)
     CB = x(2)
     // Velocidad de reacción
+    // r = rd - ri
     r = kd*CA - ki*CB
     // Velocidad máxima
     [rmax,indexTopt] = max(r)
@@ -33,6 +26,14 @@ function dxdt = f(t,x)
     dxdt(2) = dCBdt
     dxdt(3) = Topt  // Almacenar Topt
 endfunction
+
+// CONSTANTES
+kd0 = 1.94E15; ki0 = 6.26E19; // h-1
+Ed = 44500; Ei = 59500; // cal/mol
+R = 1.987; // cal/(mol*K)
+Tmin = 500; dT = 0.1; Tmax = 650; T = Tmin:dT:Tmax; // K
+kd = kd0*exp(-Ed./(R*T)); // Ecuación de Arrhenius directa
+ki = ki0*exp(-Ei./(R*T)); // Ecuación de Arrhenius inversa
 
 // CONDICIONES INICIALES
 CAini = 1; CBini = 0; // mol/L

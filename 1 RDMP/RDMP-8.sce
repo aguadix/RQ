@@ -18,6 +18,7 @@ function dxdt = f(t,x)
     CB = NB/V
     CC = NC/V
     // Velocidad de reacción
+    // r = rd - ri = kd*CA*CB - ki*CC = kd*CA*CB - kd*CC/Keq
     r = k*(CA*CB-CC/Keq)    
     // Balance de materia para A
     dNAdt = -r*V

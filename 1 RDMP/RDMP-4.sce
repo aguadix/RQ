@@ -9,6 +9,7 @@ function dxdt = f(t,x)
     CA = x(1)
     CB = x(2)
     // Velocidad de reacción
+    // r = rd - ri = kd*CA^2 - ki*CB = kd*CA^2 - kd*CB/Keq
     r = kd*(CA^2 - CB/Keq)
     // Balance de materia para A
     // d(V*CA)dt = -r*V
