@@ -45,9 +45,9 @@ Keq0 = 8.25E-22; // L/mol
 R = 8.314; // J/(mol*K)
 
 // CONDICIONES INICIALES
-CAini = 1; CBini = 2; CPini = 0; // mol/L
+CAini = 1; CBini = 2; CCini = 0; // mol/L
 Tini = 300; // K
-xini = [CAini; CBini; CPini; Tini];
+xini = [CAini; CBini; CCini; Tini];
 
 // TIEMPO
 dt= 0.1;
@@ -88,7 +88,7 @@ plot(Tini,XAeq,'ro');
 xgrid; xtitle('RDMP-5','Tini','XAeq');
 
 scf(4);  
-if XAeq > 0.5 then
+if XAeq > XAobj then
     plot(Tini,tXAobj,'ro');
 end
 xgrid; xtitle('RDMP-5','Tini','tXAobj');
