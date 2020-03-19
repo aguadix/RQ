@@ -18,4 +18,6 @@ Código en [Scilab](http://www.scilab.org)
 
 Carpeta de archivos en [Google Drive](https://drive.google.com/drive/folders/1YU3lfvY7HRdlSeeqGyyuNjekO433TEav?usp=sharing)
 
+Lista de reproducción en [YouTube](https://www.youtube.com/playlist?list=PLh3F9fU7h8w16RIv1I1yo4jtgwcO8BjP4)  
+
 [Formulario de asistencia](https://docs.google.com/forms/d/e/1FAIpQLSeGuVjwPysHE2IftUtXyUzrQk0d6xcuCEu2375SL2asZg_bVw/viewform)
