@@ -2,6 +2,7 @@ clear; clc;
 // RDMP-1.sce
 // A => B
 // Isotermo
+// https://youtu.be/VEIvqTVunZ0
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)

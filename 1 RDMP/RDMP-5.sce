@@ -2,6 +2,7 @@ clear; clc;
 // RDMP-5.sce
 // A + B <=> C
 // Adiabático
+// https://youtu.be/4TWxcq9uMy4
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
