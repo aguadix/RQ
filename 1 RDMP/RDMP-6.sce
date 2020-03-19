@@ -3,6 +3,39 @@ clear; clc;
 // A <=> B
 // Progresión óptima de temperatura
 
+// PARTE 1
+
+// CONSTANTES
+kd0 = 1.94E15; ki0 = 6.26E19; // h-1
+Ed = 44500; Ei = 59500; // cal/mol
+R = 1.987; // cal/(mol*K)
+Tmin = 500; dT = 0.1; Tmax = 650; T = Tmin:dT:Tmax; // K
+kd = kd0*exp(-Ed./(R*T)); // Ecuación de Arrhenius directa
+ki = ki0*exp(-Ei./(R*T)); // Ecuación de Arrhenius inversa
+
+// CONDICIONES INICIALES
+CAini = 1; CBini = 0; // mol/L
+
+XA = 0;
+
+CA = CAini - CAini*XA
+CB = CBini + CAini*XA
+
+// Velocidad de reacción
+// r = rd - ri
+r = kd*CA - ki*CB;
+// Velocidad máxima
+[rmax,indexTopt] = max(r)
+// Temperatura óptima
+Topt = T(indexTopt)
+
+// GRÁFICAS
+scf(1);  
+plot(T,r,Topt,rmax,'ro');
+xgrid; xtitle('RDMP-6','T','r');
+
+// PARTE 2
+
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
     // Variables diferenciales
@@ -27,16 +60,7 @@ function dxdt = f(t,x)
     dxdt(3) = Topt  // Almacenar Topt
 endfunction
 
-// CONSTANTES
-kd0 = 1.94E15; ki0 = 6.26E19; // h-1
-Ed = 44500; Ei = 59500; // cal/mol
-R = 1.987; // cal/(mol*K)
-Tmin = 500; dT = 0.1; Tmax = 650; T = Tmin:dT:Tmax; // K
-kd = kd0*exp(-Ed./(R*T)); // Ecuación de Arrhenius directa
-ki = ki0*exp(-Ei./(R*T)); // Ecuación de Arrhenius inversa
-
 // CONDICIONES INICIALES
-CAini = 1; CBini = 0; // mol/L
 xini = [CAini; CBini; 0];
 
 // TIEMPO
@@ -60,10 +84,10 @@ XAToptTmax = XA(indexToptTmax)
 ToptTmax = Topt(indexToptTmax)
 
 // GRÁFICAS
-scf(1); clf(1); 
+scf(2); clf(2); 
 plot(t,XA,tToptTmax,XAToptTmax,'ro');
 xgrid; xtitle('RDMP-6','t','XA');
 
-scf(2); clf(2); 
+scf(3); clf(3); 
 plot(t,Topt,tToptTmax,ToptTmax,'ro');
 xgrid; xtitle('RDMP-6','t','Topt');
