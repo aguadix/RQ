@@ -2,6 +2,7 @@ clear; clc;
 // RDMP-7.sce
 // A(g) => 2 B(g)
 // Isotermo, isobárico
+// https://youtu.be/9K-bBbcmFJs
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)

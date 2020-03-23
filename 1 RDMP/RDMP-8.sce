@@ -2,6 +2,7 @@ clear; clc;
 // RDMP-8.sce
 // A(g) + B(g) <=> C(g)
 // Isotermo, isobárico
+// https://youtu.be/gfmRI9Xrx1g
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
@@ -80,4 +81,4 @@ xgrid; xtitle('RDMP-8','t','CA(azul), CB(verde), CC(rojo)');
 
 scf(4); 
 plot(NI,XAeq,'ro');
-xgrid; xtitle('RDMP-3b','NI','XAeq');
+xgrid; xtitle('RDMP-8','NI','XAeq');
