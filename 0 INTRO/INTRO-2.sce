@@ -1,5 +1,6 @@
 clear; clc;
 // INTRO-2.sce
+// RESOLUCIÓN NUMÉRICA DE UN SISTEMA DE ECUACIONES DIFERENCIALES
 
 // Sistema de ecuaciones diferenciales
 function dxdt = f(t,x)

@@ -54,6 +54,33 @@ Tee = xee(2)
 plot(CAee,Tee,'rx');
 
 // ESTABILIDAD DE LOS ESTADOS ESTACIONARIOS
-J = numderivative(f,xee)  // Jacobiano
-lambda = spec(J)  // Valores propios
+
+// Sistema no lineal
+// dxdt = f(x)
+// dCAdt = f1(CA,T)
+// dTdt  = f2(CA,T)
+
+// Linealización alrededor del estado estacionario
+//  f1(CAee,Tee) = 0
+//  f2(CAee,Tee) = 0 
+
+// Desarrollo en serie de Taylor
+//  dCAdt = f1(CAee,Tee) + df1dCAee*(CA-CAee) + df1dTee*(T-Tee)
+//  dTdt  = f2(CAee,Tee) + df2dCAee*(CA-CAee) + df2dTee*(T-Tee)
+
+// Variables de desviación
+// CAd = CA - CAee  => dCAddt = dCAdt
+// Td  = T  - Tee   => dTddt  = dTdt
+
+// Sistema lineal
+// dCAddt = df1dCAee*CAd + df1dTee*Td
+// dTddt  = df2dCAee*CAd + df2dTee*Td
+// dxddt = A*xd
+
+// Jacobiano
+// A = [df1dCAee  df1dTee
+//      df2dCAee  df2dTee] 
+
+A = numderivative(f,xee)
+lambda = spec(A)  
 Estable = real(lambda) < 0
