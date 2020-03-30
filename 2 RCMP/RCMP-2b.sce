@@ -3,6 +3,7 @@ clear; clc;
 // A + B <=> C
 // Isotermo
 // Dinámica
+// https://youtu.be/j-MNErgokXY
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
@@ -11,6 +12,7 @@ function dxdt = f(t,x)
     CB = x(2)
     CC = x(3)
     // Velocidad de reacción
+    // r = rd - ri = kd*CA*CB - ki*CC = kd*CA*CB - kd*CC/Keq
     r = kd*(CA*CB - CC/Keq)
     // Balance de materia para A
     // d(V*CA)dt = F*CA0 - F*CA - r*V
@@ -51,6 +53,7 @@ CA = x(1,:); CAee = CA($)
 CB = x(2,:); CBee = CB($) 
 CC = x(3,:); CPee = CC($)
 
+// GRÁFICAS
 scf(1); clf(1);
 plot(t,CA,t,CB,t,CC);
 xgrid; xtitle('RCMP-2b', 't', 'CA(azul), CB(verde), CB(rojo)');

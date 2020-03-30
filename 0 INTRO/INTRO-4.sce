@@ -14,7 +14,7 @@ x1min = -10; x1max = 10; x1interval = x1min:x1max;
 x2min = -10; x2max = 10; x2interval = x2min:x2max;
 r = 0.025;
 
-
+// Punto de prueba
 x = [5;1];
 dxdt = f(0,x)
 plot([x(1),x(1)+dxdt(1)*r],[x(2),x(2)+dxdt(2)*r]);
@@ -26,8 +26,7 @@ a.y_location = "origin";
 a.isoview    = "on";
 a.data_bounds = [x1min,x2min ; x1max,x2max];
 
-
-
+// Campo completo
 for i = 1:length(x1interval)
   for j = 1:length(x2interval)
     x = [x1interval(i);x2interval(j)];
@@ -37,6 +36,7 @@ for i = 1:length(x1interval)
   end
 end  
 
+// Función de Scilab: fchamp
 scf(2); clf(2);
 fchamp(f, 0, x1interval, x2interval);
 a = gca();
@@ -45,11 +45,9 @@ a.y_location = "origin";
 a.isoview    = "on";
 a.data_bounds = [x1min,x2min ; x1max,x2max];
 
-
-// TRAYECTORIA
+// Trayectoria
 tfin = 10; dt = 0.1; t = 0:dt:tfin;
 xini = [10;10];
 x = ode(xini,0,t,f);
 scf(1); plot(x(1,:),x(2,:),'o-');
 scf(2); plot(x(1,:),x(2,:),'o-');
-

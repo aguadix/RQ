@@ -44,6 +44,8 @@ E = 2.1E4; // cal/mol
 CAmin = 0; dCA = 0.2; CAmax = 3;
 Tmin = 280; dT = 10; Tmax = 500;
 fchamp(f,0,CAmin:dCA:CAmax,Tmin:dT:Tmax);
+a = gca();
+a.data_bounds = [CAmin, Tmin ; CAmax,Tmax];
 
 // CONDICIONES INICIALES
 CAini = 0; // mol/L
@@ -59,5 +61,6 @@ CA = x(1,:); CAee = CA($)
 T = x(2,:); Tee = T($)
 
 // TRAYECTORIA
-plot(CA,T,'o');
-mtlb_axis([CAmin CAmax Tmin Tmax]);
+plot(CA,T,'o-');
+a = gca();
+a.data_bounds = [CAmin, Tmin ; CAmax,Tmax];

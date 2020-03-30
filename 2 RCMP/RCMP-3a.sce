@@ -36,9 +36,10 @@ CAbe = (F*RHO*CP*(T0-T) - Q)./(H*k*V);
 
 // GRÁFICAS
 scf(1); clf(1);
-plot(CAbm,T,'g',CAbe,T,'r');
+plot(CAbm,T,'r--',CAbe,T,'r-.');
 xtitle('RCMP-3','CA','T');
-mtlb_axis([CAmin CAmax Tmin Tmax]);
+a = gca();
+a.data_bounds = [CAmin, Tmin ; CAmax,Tmax];
 
 // LOCALIZACIÓN DE ESTADOS ESTACIONARIOS
 Nee = 0;

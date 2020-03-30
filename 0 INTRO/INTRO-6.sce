@@ -33,13 +33,13 @@ xeeguess = [0.5;0.5];  // Solución supuesta
 
 A = numderivative(f,xee)
 
-// EJEMPLO
+// Punto de prueba
 x0 = xee*(1+1E-3)
 
-// No lineal
+// Derivadas exactas (sistema no lineal)
 dxdt0 = f(x0)
  
-// Linealizado
+// Derivadas aproximadas (sistema linealizado)
 xd0 = x0 - xee;
 dxddt0 = A*xd0
 

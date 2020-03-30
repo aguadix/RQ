@@ -3,6 +3,7 @@ clear; clc;
 // A + B <=> C
 // Isotermo
 // Estado estacionario
+// https://youtu.be/sygA7aWV5qg
 
 // SISTEMA DE ECUACIONES ALGEBRAICAS
 function dxdt = f(x)
@@ -11,6 +12,7 @@ function dxdt = f(x)
     CB = x(2)
     CC = x(3)
     // Velocidad de reacción
+    // r = rd - ri = kd*CA*CB - ki*CC = kd*CA*CB - kd*CC/Keq
     r = kd*(CA*CB - CC/Keq)
     // Balance de materia para A
     // d(V*CA)dt = F*CA0 - F*CA - r*V

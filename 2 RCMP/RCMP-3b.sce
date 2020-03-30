@@ -53,34 +53,19 @@ Tee = xee(2)
 // GRÁFICAS
 plot(CAee,Tee,'rx');
 
-// ESTABILIDAD DE LOS ESTADOS ESTACIONARIOS
+// LINEALIZACIÓN DE UN SISTEMA NO LINEAL ALREDEDOR DE UN ESTADO ESTACIONARIO
 
-// Sistema no lineal
-// dxdt = f(x)
-// dCAdt = f1(CA,T)
-// dTdt  = f2(CA,T)
+// Sistema no lineal   =>    Sistema lineal
+// dxdt = f(x)         =>    dxddt  = A*xd
 
-// Linealización alrededor del estado estacionario
-//  f1(CAee,Tee) = 0
-//  f2(CAee,Tee) = 0 
+// xd = x - xee; Variables de desviación 
+A = numderivative(f,xee); // Jacobiano
 
-// Desarrollo en serie de Taylor
-//  dCAdt = f1(CAee,Tee) + df1dCAee*(CA-CAee) + df1dTee*(T-Tee)
-//  dTdt  = f2(CAee,Tee) + df2dCAee*(CA-CAee) + df2dTee*(T-Tee)
+// ESTABILIDAD DE UN SISTEMA LINEAL DE ECUACIONES DIFERENCIALES
 
-// Variables de desviación
-// CAd = CA - CAee  => dCAddt = dCAdt
-// Td  = T  - Tee   => dTddt  = dTdt
+// Valores propios
+lambda = spec(A)
 
-// Sistema lineal
-// dCAddt = df1dCAee*CAd + df1dTee*Td
-// dTddt  = df2dCAee*CAd + df2dTee*Td
-// dxddt = A*xd
-
-// Jacobiano
-// A = [df1dCAee  df1dTee
-//      df2dCAee  df2dTee] 
-
-A = numderivative(f,xee)
-lambda = spec(A)  
+// Critero de estabilidad
 Estable = real(lambda) < 0
+

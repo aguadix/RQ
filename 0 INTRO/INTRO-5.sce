@@ -41,6 +41,8 @@ x = ode(xini,0,t,f);
 plot(x(1,:),x(2,:),'o');
 a.data_bounds=[-10,-10;10,10];
 
-// Estabilidad
+// Valores propios
 lambda = spec(A)
+
+// Critero de estabilidad
 Estable = real(lambda) < 0

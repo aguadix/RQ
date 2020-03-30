@@ -8,6 +8,10 @@ function y = f(x)
     y(2) = x(1)*x(2)^3
 endfunction
 
+// J = [df1dx1ee  df1dx2ee
+//      df2dx1ee  df2dx2ee]
+
+// Punto de prueba
 x0 = [1;%pi/4];
 fx0 = f(x0)
 
