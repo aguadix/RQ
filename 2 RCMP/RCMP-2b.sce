@@ -37,8 +37,8 @@ kd = 0.1; // L/(mol*min)
 Keq = 10; // L/mol
 
 // CONDICIONES INICIALES
-CAini = 0; CBini = 0; CPini = 0; // mol/L
-xini = [CAini; CBini; CPini];
+CAini = 0; CBini = 0; CCini = 0; // mol/L
+xini = [CAini; CBini; CCini];
 
 // TIEMPO
 tfin = 150; dt = 0.5; t = 0:dt:tfin; // min
@@ -51,9 +51,9 @@ Estacionario = abs(dxdtfin ./ xfin) < 1E-5
 
 CA = x(1,:); CAee = CA($)
 CB = x(2,:); CBee = CB($) 
-CC = x(3,:); CPee = CC($)
+CC = x(3,:); CCee = CC($)
 
 // GRÁFICAS
 scf(1); clf(1);
 plot(t,CA,t,CB,t,CC);
-xgrid; xtitle('RCMP-2b', 't', 'CA(azul), CB(verde), CB(rojo)');
+xgrid; xtitle('RCMP-2b', 't', 'CA(azul), CB(verde), CC(rojo)');
