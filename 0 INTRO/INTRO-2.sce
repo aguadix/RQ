@@ -1,4 +1,5 @@
-clear; clc;
+clear; // Borra variables
+clc;   //  Limpia consola
 // INTRO-2.sce
 // RESOLUCIÓN NUMÉRICA DE UN SISTEMA DE ECUACIONES DIFERENCIALES
 
@@ -13,9 +14,6 @@ c = [1 2];  // Constantes
 xini = [1;0;0]  // Condiciones iniciales (valores a tiempo cero)
 dt = 0.1; tfin = 10; t = 0:dt:tfin;  // Vector de tiempo
 
-scf(1); clf(1);// Configura y limpia la ventana gráfica
-xgrid; xtitle('INTRO-2','t','x'); // Cuadrícula y títulos
-
 
 // (a) MÉTODO DE EULER
 
@@ -25,7 +23,9 @@ for i = 1:length(t)-1
   x(:,i+1) = x(:,i) + dt * f(t(i),x(:,i));  // Fórmula
 end
 
+scf(1); clf(1);// Configura y limpia la ventana gráfica
 plot(t,x,'o');   // Gráfica
+xgrid; xtitle('INTRO-2','t','x1(azul), x2(verde), x3(rojo)'); // Cuadrícula y títulos
 
 
 // (b) MÉTODO RK4

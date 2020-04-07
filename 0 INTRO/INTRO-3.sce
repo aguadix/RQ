@@ -1,4 +1,5 @@
-clear; clc;
+clear; // Borra variables
+clc;   //  Limpia consola
 // INTRO-3.sce
 // CÁLCULO NUMÉRICO DE LA MATRIZ JACOBIANA
 
@@ -15,7 +16,7 @@ endfunction
 x0 = [1;%pi/4];
 fx0 = f(x0)
 
-// Analítico
+// (a) Analítico
 function dfdx = J(x)
     dfdx(1,1) = 2*x(1)*sin(x(2))
     dfdx(1,2) = x(1)^2*cos(x(2))
@@ -26,7 +27,7 @@ endfunction
 Jx0 = J(x0)
 
 
-// Numérico
+// (b) Numérico
 h = 1E-6;
 function y = Jac(x)
     y(1) = (f([x(1)+h,x(2)]) - f([x(1),x(2)])) / h
@@ -35,5 +36,5 @@ endfunction
 
 Jx0 = J(x0)
 
-// Scilab
+// (c) Scilab
 Jx0 = numderivative(f,x0)

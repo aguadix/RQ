@@ -1,4 +1,5 @@
-clear; clc;
+clear; // Borra variables
+clc;   //  Limpia consola
 // INTRO-1.sce
 // RESOLUCIÓN NUMÉRICA DE UN SISTEMA DE ECUACIONES ALGEBRAICAS
 
@@ -8,19 +9,23 @@ function y = f(x)
   y(2) = x(1)^2 - x(2)
 endfunction
 
-scf(1); clf(1);// Configura y limpia la ventana gráfica
-xgrid; xtitle('INTRO-1','x1','x2'); // Cuadrícula y títulos
+// Gráfica
+scf(1); // Configura ventana gráfica
+clf(1); // Limpia ventana gráfica
+t = 0:0.001:1; x = cos(2*%pi*t); y = sin(2*%pi*t); plot(x,y); // Dibuja f1(x)=0
+x = -1:0.001:1; y = x^2; plot(x,y); // Dibuja f2(x)=0
+xgrid; // Cuadrícula
+xtitle('INTRO-1','x1','x2'); // Títulos
 
-t = 0:0.01:1; xc = cos(2*%pi*t); yc = sin(2*%pi*t); plot(xc,yc); // Círculo
-xp = -1.5:0.1:1.5; yp = xp^2; plot(xp,yp);  // Parábola
-
-xguess = [0.5;0.5];  // Solución supuesta
+// Solución supuesta
+xguess = [0.5;0.5];  
 plot(xguess(1),xguess(2),'ro');
 
 
 // (a) MÉTODO DE NEWTON
 
-function dfdx = J(x)   // Jacobiano
+// Jacobiano
+function dfdx = J(x)   
   dfdx(1,1) = 2*x(1) 
   dfdx(1,2) = 2*x(2)
   dfdx(2,1) = 2*x(1)
@@ -31,16 +36,15 @@ x = xguess; // Solución de partida
 imax = 50;  // Número máximo de iteraciones
 tol = 1E-6; // Tolerancia
 
-
 for i = 1:imax
   i
   x = x - inv(J(x))*f(x)      // Fórmula
   plot(x(1),x(2),'ro'); xnumb(x(1), x(2), i);
   if abs(f(x)) < tol then
-    break                  // Salir del bucle si se rebaja la tolerancia 
+    break   // Salir del bucle si se rebaja la tolerancia 
   end
 end
-f(x)  // Valor de la función en la solución
+fx = f(x)  // Valor de la función en la solución
 
 
 // (b) FUNCIÓN DE SCILAB - fsolve 
