@@ -6,15 +6,15 @@ clc;   //  Limpia consola
 // J = [df1dx1  df1dx2
 //      df2dx1  df2dx2]
 
-// Punto de prueba
-x = [1;%pi/4];
-fx = f(x)
-
 // Función multivariable
 function y = f(x)
     y(1) = x(1)^2*sin(x(2))
     y(2) = x(1)*x(2)^3
 endfunction
+
+// Punto de prueba
+x = [1;%pi/4];
+fx = f(x)
 
 // (a) Analítico
 function dfdx = Ja(x)
