@@ -17,17 +17,18 @@ scf(1); clf(1);
 // dxdt(1) = -2*x(1) +   x(2) = 0
 plot(x1interval,2*x1interval,'r-');
 // dxdt(2) =    x(1) - 4*x(2) = 0
-plot(x1interval,x1interval/4,'r-.');
-g1 = gca;
-g1.x_location = 'origin';
-g1.y_location = 'origin';
-g1.isoview    = 'on';
-g1.data_bounds = [x1min,x2min ; x1max,x2max];
+plot(x1interval,x1interval/4,'r--');
+a1 = gca;
+a1.x_location = 'origin';
+a1.y_location = 'origin';
+a1.isoview    = 'on';
+a1.data_bounds = [x1min,x2min ; x1max,x2max];
+a1.box = 'off';
 
 // Punto de prueba
 x = [5;5];
 dxdt = f(0,x)
-r = 0.025;
+r = 0.025//0.025;
 plot([x(1),x(1)+dxdt(1)*r],[x(2),x(2)+dxdt(2)*r]);
 plot(x(1)+dxdt(1)*r,x(2)+dxdt(2)*r ,'o')
 
