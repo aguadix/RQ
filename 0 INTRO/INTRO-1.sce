@@ -12,8 +12,8 @@ endfunction
 // Gráfica
 scf(1); // Configura ventana gráfica
 clf(1); // Limpia ventana gráfica
-t = 0:0.001:1; x = cos(2*%pi*t); y = sin(2*%pi*t); plot(x,y); // Dibuja f1(x)=0
-x = -1:0.001:1; y = x^2; plot(x,y); // Dibuja f2(x)=0
+t = 0:0.001:1; x1 = cos(2*%pi*t); x2 = sin(2*%pi*t); plot(x1,x2); // Dibuja f1(x)=0
+x1 = -1:0.001:1; x2 = x1^2; plot(x1,x2); // Dibuja f2(x)=0
 xgrid; // Cuadrícula
 xtitle('INTRO-1','x1','x2'); // Títulos
 
