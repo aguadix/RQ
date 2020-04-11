@@ -55,21 +55,27 @@ Estable = real(lambda) < 0
 scf(1);
 x1min = -10; x1max = 10; x1interval = x1min:x1max;
 x2min = -10; x2max = 10; x2interval = x2min:x2max;
+
+// Líneas de pendiente nula
+// dxdt(1) = A(1,1)*x(1) + A(1,2)*x(2)
+plot(x1interval,-A(1,1)*x1interval/A(1,2),'r-');
+// dxdt(2) = A(2,1)*x(1) + A(2,2)*x(2)
+plot(x1interval,-A(2,1)*x1interval/A(2,2),'r--');
+
+// Campo vectorial
 fchamp(f, 0, x1interval, x2interval);
-g1 = gca;
-g1.x_location = 'origin';
-g1.y_location = 'origin';
-g1.isoview    = 'on';
-g1.data_bounds = [x1min,x2min ; x1max,x2max];
+a1 = gca;
+a1.x_location = 'origin';
+a1.y_location = 'origin';
+a1.isoview    = 'on';
+a1.data_bounds = [x1min,x2min ; x1max,x2max];
+a1.box = 'off';
 
 tfin = 10; dt = 0.1; t = 0:dt:tfin;
-//xini = -10*v1 + 0*v2
- xini = [0.00001;0.00001];
+xini = -10*v1 + 0*v2
+// xini = [-10;-10];
 // xini = locate(1)
 x = ode(xini,0,t,f);
-xfin = x(:,$)
 
 plot(x(1,:),x(2,:),'o-');
-plot(xini(1),xini(2),'go');
-plot(xfin(1),xfin(2),'ro');
-g1.data_bounds = [x1min,x2min ; x1max,x2max];
+a1.data_bounds = [x1min,x2min ; x1max,x2max];
