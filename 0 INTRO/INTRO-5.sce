@@ -47,8 +47,10 @@ lambda2*v2
 
 // c1,c2 = Constantes dependientes de las condiciones iniciales
 
-
 // CRITERIO DE ESTABILIDAD
+// t => infinito
+// x1 => 0, x2 => 0
+// lambda1 < 0, lambda2 < 0
 Estable = real(lambda) < 0
 
 // PLANO DE FASES
@@ -57,9 +59,9 @@ x1min = -10; x1max = 10; x1interval = x1min:x1max;
 x2min = -10; x2max = 10; x2interval = x2min:x2max;
 
 // Líneas de pendiente nula
-// dxdt(1) = A(1,1)*x(1) + A(1,2)*x(2)
+// dxdt(1) = A(1,1)*x(1) + A(1,2)*x(2) = 0
 plot(x1interval,-A(1,1)*x1interval/A(1,2),'r-');
-// dxdt(2) = A(2,1)*x(1) + A(2,2)*x(2)
+// dxdt(2) = A(2,1)*x(1) + A(2,2)*x(2) = 0
 plot(x1interval,-A(2,1)*x1interval/A(2,2),'r--');
 
 // Campo vectorial
@@ -71,11 +73,11 @@ a1.isoview    = 'on';
 a1.data_bounds = [x1min,x2min ; x1max,x2max];
 a1.box = 'off';
 
+// Trayectoria
 tfin = 10; dt = 0.1; t = 0:dt:tfin;
-xini = -10*v1 + 0*v2
-// xini = [-10;-10];
+xini = 10*v1 + 0*v2
+// xini = [10;10];
 // xini = locate(1)
 x = ode(xini,0,t,f);
-
 plot(x(1,:),x(2,:),'o-');
 a1.data_bounds = [x1min,x2min ; x1max,x2max];
