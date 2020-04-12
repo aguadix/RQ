@@ -66,10 +66,17 @@ for i = 1:length(t)
 
 end
 
-
-// Análisis de estabilidad
+// Estado estacionario
 Aee = 0; Wee = 0;
 xee = [Aee;Wee]
-f(0,xee)
+dxdteec = f(0,xee)
+
+// Linealización
+// dxdt = f(x) => dxddt = J*xd
 J = numderivative(f,xee)
+
+// Estabilidad
 lambda = spec(J)
+Estable = and(real(lambda) < 0)
+
+

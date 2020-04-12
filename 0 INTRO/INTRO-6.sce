@@ -35,11 +35,11 @@ xd = x - xee
 // dx1ddt = df1dx1ee*x1d + df1dx2ee*x2d
 // dx2ddt = df2dx1ee*x1d + df2dx2ee*x2d
 
-// A = [df1dx1ee  df1dx2ee
+// J = [df1dx1ee  df1dx2ee
 //      df2dx1ee  df2dx2ee]   (JACOBIANO)
-A = numderivative(f,xee)
+J = numderivative(f,xee)
 
 // Derivadas aproximadas (sistema linealizado)
-dxddt = A*xd
+dxddt = J*xd
 
 Error = (dxddt-dxdt)./dxdt
