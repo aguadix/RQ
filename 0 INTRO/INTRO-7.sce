@@ -60,6 +60,7 @@ for i = 1:length(t)
     plot(X(i),Y(i),'Marker', 'o', 'MarkerSize', 25, 'MarkerEdgeColor', 'blue', 'MarkerFaceColor', 'blue');
     plot([0 X(i)],[0 Y(i)]);
     xstring(1,1,"t = " + string(int(t(i))));
+  
   drawnow();
 
   //sleep(100);
@@ -69,7 +70,7 @@ end
 // Estado estacionario
 Aee = 0; Wee = 0;
 xee = [Aee;Wee]
-dxdteec = f(0,xee)
+dxdtee = f(0,xee)
 
 // Linealización
 // dxdt = f(x) => dxddt = J*xd
@@ -78,5 +79,3 @@ J = numderivative(f,xee)
 // Estabilidad
 lambda = spec(J)
 Estable = and(real(lambda) < 0)
-
-
