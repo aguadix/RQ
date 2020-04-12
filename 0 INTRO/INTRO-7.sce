@@ -1,6 +1,6 @@
 clear; clc;
-// Péndulo amortiguado
-// https://en.wikipedia.org/wiki/Pendulum_(mathematics)
+// INTRO-7.sce
+// PÉNDULO AMORTIGUADO
 
 // Sistema de ecuaciones diferenciales
 function dxdt = f(t,x)
@@ -8,24 +8,24 @@ function dxdt = f(t,x)
     A = x(1)   // Ángulo
     W = x(2)   // Velocidad angular
     // Segunda Ley de Newton
-    // d2Adt2 = -r*dAdt - g/L*sin(A)
+    // d2Adt2 = -b*dAdt - g/L*sin(A)
     dAdt = W
-    dWdt = -r*W - g/L*sin(A)
+    dWdt = -b*W - g/L*sin(A)
     // Derivadas
     dxdt(1) = dAdt
     dxdt(2) = dWdt
 endfunction
 
 // Constantes
-r = 1; g = 9.8; L = 1;
+b = 1; g = 9.8; L = 1;
  
 // Condiciones iniciales
-//Aini = %pi/2; Wini = 0; 
-Aini = 0; Wini = 8.377820946; 
+Aini = %pi/4; Wini = 0; 
+//Aini = 0; Wini = 8.377820946; 
 xini = [Aini;Wini]; 
 
 // Tiempo
-tfin = 25; dt = 0.1; t = 0:dt:tfin; 
+tfin = 10; dt = 0.1; t = 0:dt:tfin; 
 
 // RESOLVER
 x = ode(xini,0,t,f); 
@@ -39,7 +39,6 @@ a1 = gca;
 a1.x_location = 'origin'; a1.y_location = 'origin'; 
 a1.box = 'off';
 xgrid; xtitle('','t','A');
-
 
 scf(2); 
 
@@ -69,7 +68,7 @@ end
 
 
 // Análisis de estabilidad
-Aee = %pi; Wee = 0;
+Aee = 0; Wee = 0;
 xee = [Aee;Wee]
 f(0,xee)
 J = numderivative(f,xee)
