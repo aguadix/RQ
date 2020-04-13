@@ -19,6 +19,20 @@ endfunction
 // Constantes
 b = 1; g = 9.8; L = 1;
  
+// Estado estacionario
+Aee = 0; // %pi
+Wee = 0;
+xee = [Aee;Wee]
+dxdtee = f(0,xee)
+
+// Linealización
+// dxdt = f(x) => dxddt = J*xd
+J = numderivative(f,xee)
+
+// Estabilidad
+lambda = spec(J)
+Estable = and(real(lambda) < 0)
+
 // Condiciones iniciales
 Aini = %pi/4; Wini = 0; 
 //Aini = 0; Wini = 8.377820946; 
@@ -56,26 +70,11 @@ for i = 1:length(t)
     a2.box = 'off'; 
     a2.isoview = 'on';
     a2.auto_ticks = 'off';
-    //plot(X(i),Y(i),'.');
-    plot(X(i),Y(i),'Marker', 'o', 'MarkerSize', 25, 'MarkerEdgeColor', 'blue', 'MarkerFaceColor', 'blue');
+    plot(X(i),Y(i),'.');
     plot([0 X(i)],[0 Y(i)]);
     xstring(1,1,"t = " + string(int(t(i))));
   
   drawnow();
 
-  //sleep(100);
-
 end
 
-// Estado estacionario
-Aee = 0; Wee = 0;
-xee = [Aee;Wee]
-dxdtee = f(0,xee)
-
-// Linealización
-// dxdt = f(x) => dxddt = J*xd
-J = numderivative(f,xee)
-
-// Estabilidad
-lambda = spec(J)
-Estable = and(real(lambda) < 0)

@@ -51,21 +51,18 @@ CAee = xee(1)
 Tee = xee(2)
 
 // GRÁFICAS
+scf(1);
 plot(CAee,Tee,'rx');
 
-// LINEALIZACIÓN DE UN SISTEMA NO LINEAL ALREDEDOR DE UN ESTADO ESTACIONARIO
-
+// LINEALIZACIÓN
 // Sistema no lineal   =>    Sistema lineal
-// dxdt = f(x)         =>    dxddt  = A*xd
+// dxdt = f(x)         =>    dxddt  = J*xd
+J = numderivative(f,xee); // Jacobiano
 
-// xd = x - xee; Variables de desviación 
-A = numderivative(f,xee); // Jacobiano
-
-// ESTABILIDAD DE UN SISTEMA LINEAL DE ECUACIONES DIFERENCIALES
-
+// ESTABILIDAD
 // Valores propios
-lambda = spec(A)
+lambda = spec(J)  
 
 // Critero de estabilidad
-Estable = real(lambda) < 0
+Estable = and(real(lambda) < 0)
 

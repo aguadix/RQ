@@ -41,11 +41,12 @@ R = 1.987; // cal/(mol*K)
 E = 2.1E4; // cal/mol
 
 // CAMPO VECTORIAL
-CAmin = 0; dCA = 0.2; CAmax = 3;
+scf(1);
+CAmin = 0; dCA = 0.1; CAmax = 3;
 Tmin = 280; dT = 10; Tmax = 500;
 fchamp(f,0,CAmin:dCA:CAmax,Tmin:dT:Tmax);
-a = gca();
-a.data_bounds = [CAmin, Tmin ; CAmax,Tmax];
+a1 = gca;
+a1.data_bounds = [CAmin, Tmin ; CAmax,Tmax];
 
 // CONDICIONES INICIALES
 CAini = 0; // mol/L
@@ -61,6 +62,6 @@ CA = x(1,:); CAee = CA($)
 T = x(2,:); Tee = T($)
 
 // TRAYECTORIA
+scf(1);
 plot(CA,T,'o-');
-a = gca();
-a.data_bounds = [CAmin, Tmin ; CAmax,Tmax];
+a1.data_bounds = [CAmin, Tmin ; CAmax,Tmax];
