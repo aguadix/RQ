@@ -1,6 +1,7 @@
 clear; clc;
 // INTRO-5.sce
 // ESTABILIDAD DE UN SISTEMA LINEAL DE ECUACIONES DIFERENCIALES
+// https://youtu.be/DBuJ5TDaRr8
 
 function dxdt = f(t,x)
     // dxdt(1) = A(1,1)*x(1) + A(1,2)*x(2)

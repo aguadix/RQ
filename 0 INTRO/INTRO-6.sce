@@ -1,6 +1,7 @@
 clear; clc;
 // INTRO-6.sce
 // LINEALIZACIÓN DE UN SISTEMA NO LINEAL ALREDEDOR DE UN ESTADO ESTACIONARIO
+// https://youtu.be/7gxZHCrdw8o
 
 // Sistema no lineal
 function dxdt = f(x)

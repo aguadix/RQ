@@ -2,7 +2,8 @@ clear; clc;
 // RCMP-3a.sce
 // A => B
 // No adiabático
-// Estado estacionario
+// Método gráfico
+// https://youtu.be/PwqRz6xbP_A
 
 // CONSTANTES
 CP = 0.8; // cal/(g*K)

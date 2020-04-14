@@ -2,6 +2,7 @@ clear; // Borra variables
 clc;   //  Limpia consola
 // INTRO-2.sce
 // RESOLUCIÓN NUMÉRICA DE UN SISTEMA DE ECUACIONES DIFERENCIALES
+// https://youtu.be/7oHgNQLP4Mg
 
 // Sistema de ecuaciones diferenciales
 function dxdt = f(t,x)
