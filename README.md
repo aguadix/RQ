@@ -20,7 +20,7 @@ Carpeta de archivos en [Google Drive](https://drive.google.com/drive/folders/1YU
 
 Listas de reproducción en YouTube:
 
-* Teoría  
+* [Teoría](https://www.youtube.com/playlist?list=PLFgfWWV_iIG7cQGKC15BPC8bihhOR0S7l)  
 * [Prácticas](https://www.youtube.com/playlist?list=PLh3F9fU7h8w16RIv1I1yo4jtgwcO8BjP4)  
 
 Formulario de asistencia desactivado por la suspensión de las clases presenciales.
