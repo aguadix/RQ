@@ -17,4 +17,4 @@ Código en [Scilab](http://www.scilab.org)
 
 Lista de reproducción en [YouTube](https://www.youtube.com/playlist?list=PLh3F9fU7h8w16RIv1I1yo4jtgwcO8BjP4)  
 
-Formulario de asistencia desactivado por la suspensión de las clases presenciales.
+~~Formulario de asistencia desactivado por la suspensión de las clases presenciales~~.
