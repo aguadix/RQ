@@ -6,12 +6,12 @@
 
 Carpeta de archivos en [Google Drive](https://drive.google.com/drive/folders/1YU3lfvY7HRdlSeeqGyyuNjekO433TEav?usp=sharing)
 
-## TEORÍA
+## Teoría
 
 Lista de reproducción en [YouTube](https://www.youtube.com/playlist?list=PLFgfWWV_iIG7cQGKC15BPC8bihhOR0S7l)  
 
 
-## PRÁCTICAS
+## Prácticas
 
 Código en [Scilab](http://www.scilab.org)
 
