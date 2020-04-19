@@ -1,4 +1,6 @@
-# Reactores Químicos (2019-2020)
+# RQ
+
+Reactores Químicos
 
 [Grado en Ingeniería Química](http://grados.ugr.es/iquimica)
 
