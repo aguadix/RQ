@@ -1,8 +1,9 @@
 clear; clc;
 // RCFP-1d.sce
-// A + B <=> P
-// No adiabático
+// A + B <=> C
+// Adiabático
 // Estado estacionario
+// 2 etapas con enfriamiento intermedio
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdtau = f(tau,x)
@@ -28,10 +29,8 @@ function dxdtau = f(tau,x)
     // RDMP: d(V*Cc)dt = r*V 
     dCCdtau =  r
     // Balance de energía
-    // RDMP: d(V*RHO*CP*T)dt = -H*r*V - Q = -H*r*V - U*A*(T-TJ)
-    // RDMP: dTdt = -H*r/(RHO*CP) - U*A*(T-TJ)/(V*RHO*CP)
-    // A/V = %pi*D*L / (%pi/4*D^2*L) = 4/D
-    dTdtau = -H*r/(RHO*CP) - 4*U*(T-TJ)/(D*RHO*CP)
+    // RDMP: d(V*RHO*CP*T)dt = -H*r*V
+    dTdtau = -H*r/(RHO*CP) 
     // Derivadas
     dxdtau(1) = dCAdtau
     dxdtau(2) = dCBdtau
@@ -53,36 +52,62 @@ L = 800; // dm
 V = %pi/4*D^2*L // L
 TAU = V/F // h
 
-U = 900; // J/(dm2*h*K)
-TJ = 310; // K
+// RCFP-1
+frac1 = 0.5;
 
-// ENTRADA
+// Entrada
 CA0 = 1.5; CB0 = 2; CC0 = 0.1; // mol/L
 T0 = 310; // K
-x0 = [CA0;CB0;CC0;T0];
+x01 = [CA0;CB0;CC0;T0];
 
-// TIEMPO DE RESIDENCIA
-tau = 0:TAU/1000:TAU; // h
-l = 0:L/1000:L; // dm
+// Tiempo de residencia
+TAU1 = frac1*TAU
+L1 = frac1*L
+tau1 = 0:TAU1/1000:TAU1; // h
+l1 = 0:L1/1000:L1; // dm
 
-// RESOLVER
-x = ode(x0,0,tau,f);
-CA = x(1,:); CAs = CA($) 
-CB = x(2,:); CBs = CB($) 
-CC = x(3,:); CCs = CC($)
-T  = x(4,:); Ts  = T($)
-XA = 1 - CA/CA0; XAs = XA($)
+// Resolver
+x1 = ode(x01,0,tau1,f);
+CA1 = x1(1,:); CA1s = CA1($)
+CB1 = x1(2,:); CB1s = CB1($)
+CC1 = x1(3,:); CC1s = CC1($)
+T1  = x1(4,:); T1s  =  T1($)
+XA1 = 1 - CA1/CA0; XA1s = XA1($)
+
+// RCFP-2
+frac2 = 1 - frac1
+
+// Entrada
+x02 = [CA1s;CB1s;CC1s;T0];
+
+// Tiempo de residencia
+TAU2 = frac2*TAU
+L2 = frac2*L
+tau2 = 0:TAU2/1000:TAU2; // h
+l2 = 0:L2/1000:L2; // dm
+
+// Resolver
+x2 = ode(x02,0,tau2,f);
+CA2 = x2(1,:); CA2s = CA2($)
+CB2 = x2(2,:); CB2s = CB2($)
+CC2 = x2(3,:); CCC2s = CC2($)
+T2  = x2(4,:); T2s  =  T2($)
+XA2 = 1 - CA2/CA0; XA2s = XA2($)
 
 // GRÁFICAS
+
 scf(1); clf(1); 
-plot(l,XA);
+plot(l1,XA1,l2,XA2);
 xgrid; xtitle('RCFP-1d','l','XA');
 
 scf(2); clf(2); 
-plot(l,T);
+plot(l1,T1,l2,T2);
 xgrid; xtitle('RCFP-1d','l','T');
 
-scf(3);
-plot(TJ, XAs,'ro');
-xgrid; xtitle('RCFP-1d','TJ','XAs');
+scf(3); clf(3)  
+plot(T1,XA1,T2,XA2);
+xgrid; xtitle('RCFP-1d','T','XA');
 
+scf(4);
+plot(frac1, XA2s,'ro');
+xgrid; xtitle('RCFP-1d','frac1','XA2s');

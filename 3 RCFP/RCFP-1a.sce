@@ -55,8 +55,6 @@ TAU = V/F // h
 
 T = 310; // K
 
-
-
 // ENTRADA
 CA0 = 1.5; CB0 = 2; CC0 = 0.1; // mol/L
 x0 = [CA0;CB0;CC0];

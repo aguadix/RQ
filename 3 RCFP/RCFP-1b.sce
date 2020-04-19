@@ -16,6 +16,7 @@ function dxdtau = f(tau,x)
     // Ecuación de Van't Hoff
     Keq = Keq0*exp(-H/(R*T))
     // Velocidad de reacción
+    // r = rd - ri = kd*CA*CB - ki*CC = kd*CA*CB - kd*CC/Keq
     r = kd*(CA*CB - CC/Keq)
     // Balance de materia para A
     // RDMP: d(V*CA)dt = -r*V 
