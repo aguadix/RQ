@@ -62,8 +62,8 @@ T0 = 310; // K
 x0 = [CA0;CB0;CC0;T0];
 
 // TIEMPO DE RESIDENCIA
-tau = 0:TAU/1000:TAU; // h
-l = 0:L/1000:L; // dm
+tau = 0:TAU/100:TAU; // h
+l = 0:L/100:L; // dm
 
 // RESOLVER
 x = ode(x0,0,tau,f);
@@ -82,6 +82,13 @@ scf(2); clf(2);
 plot(l,T);
 xgrid; xtitle('RCFP-1c','l','T');
 
-scf(3);
+scf(3); clf(3); 
+plot(T,XA,'o-');
+xgrid; xtitle('RCFP-1b','T','XA');
+
+scf(4);
 plot(TJ, XAs,'ro');
 xgrid; xtitle('RCFP-1c','TJ','XAs');
+
+
+

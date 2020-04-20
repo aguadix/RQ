@@ -8,7 +8,7 @@ clear; clc;
 // RCFP                         RDMP             
 // Estado estacionario          Dinámica         
 // Tiempo de residencia         Tiempo           
-// Entrada                      Condiciones iniciales        
+// Entrada                      Valores iniciales        
 // Salida                       Valores finales                   
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
@@ -60,8 +60,8 @@ CA0 = 1.5; CB0 = 2; CC0 = 0.1; // mol/L
 x0 = [CA0;CB0;CC0];
 
 // TIEMPO DE RESIDENCIA
-tau = 0:TAU/1000:TAU; // h
-l = 0:L/1000:L; // dm
+tau = 0:TAU/100:TAU; // h
+l = 0:L/100:L; // dm
 
 // RESOLVER
 x = ode(x0,0,tau,f);
