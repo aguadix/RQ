@@ -77,4 +77,4 @@ xgrid; xtitle('RCFP-1a','l','CA(azul), CB(verde), CC(rojo)');
 
 scf(2); clf(2); 
 plot(l,XA);
-xgrid; xtitle('RCFP-1a','l','XA');
+xgrid; xtitle('RCFP-1a','l','XA'); 

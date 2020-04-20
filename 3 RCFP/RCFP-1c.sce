@@ -30,7 +30,7 @@ function dxdtau = f(tau,x)
     // Balance de energía
     // RDMP: d(V*RHO*CP*T)dt = -H*r*V - Q = -H*r*V - U*A*(T-TJ)
     // RDMP: dTdt = -H*r/(RHO*CP) - U*A*(T-TJ)/(V*RHO*CP)
-    // A/V = %pi*D*L / (%pi/4*D^2*L) = 4/D
+    // A/V = %pi*D*L / (%pi/4*D^2*L) = 4/D 
     dTdtau = -H*r/(RHO*CP) - 4*U*(T-TJ)/(D*RHO*CP)
     // Derivadas
     dxdtau(1) = dCAdtau
@@ -84,11 +84,8 @@ xgrid; xtitle('RCFP-1c','l','T');
 
 scf(3); clf(3); 
 plot(T,XA,'o-');
-xgrid; xtitle('RCFP-1b','T','XA');
+xgrid; xtitle('RCFP-1c','T','XA');
 
 scf(4);
 plot(TJ, XAs,'ro');
 xgrid; xtitle('RCFP-1c','TJ','XAs');
-
-
-
