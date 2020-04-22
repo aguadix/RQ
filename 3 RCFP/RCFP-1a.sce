@@ -3,6 +3,7 @@ clear; clc;
 // A + B <=> C
 // Isotermo
 // Estado estacionario
+// https://youtu.be/GuvJc90GD2g
 
 // EQUIVALENCIA
 // RCFP                         RDMP             
