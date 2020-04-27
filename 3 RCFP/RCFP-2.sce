@@ -37,7 +37,7 @@ CA0 = 2; CB0 = 0.01; x0 = [CA0;CB0]; // mol/L
 tau = 0:TAU/1000:TAU; // h
 l = 0:L/1000:L; // dm
 
-// Sustitución sucesiva
+// Método del punto fijo
 
 // SOLUCIÓN SUPUESTA
 CAsguess = 2; CBsguess = 0.01; xsguess = [CAsguess;CBsguess]; // mol/l
