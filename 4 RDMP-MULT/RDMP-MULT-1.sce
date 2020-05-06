@@ -5,6 +5,7 @@ clear; clc;
 // 3) C => B
 // 4) B => D
 // Isotermo
+// https://youtu.be/SWH9SzCHgCw
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
