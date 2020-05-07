@@ -1,14 +1,14 @@
 clear; clc;
-// RCMP-MULT-2b.sce
+// RCMP-MULT-2c.sce
 // 1) 2 A => B
 // 2)   A => C 
 // No adiabático
-// Estado estacionario
+// Dinámica
 // https://youtu.be/...
 
-// SISTEMA DE ECUACIONES ALGEBRAICAS
-function dxdt = f(x)
-    // Variables 
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = f(t,x)
+    // Variables diferenciales
     CA = x(1)
     T  = x(2)
     // Ecuaciones de Arrhenius
@@ -47,28 +47,33 @@ E2  =  8.800E+04; // J/mol
 H2  = -8.370E+04; // J/mol
 R   =  8.314E+00; // J/(mol*K)
 
-// SOLUCIÓN SUPUESTA
-CAeeguess = 1.000E+01; // mol/L 
-Teeguess = 3.180E+02; // K
-xeeguess = [CAeeguess;Teeguess];
+// CAMPO VECTORIAL
+scf(1);
+CAmin = 0.000E+00; dCA = 5.000E-01; CAmax =  1.000E+01;  // mol/L
+Tmin  = 3.100E+02; dT  = 2.000E+00;  Tmax  = 3.500E+02;  // K 
+fchamp(f,0,CAmin:dCA:CAmax,Tmin:dT:Tmax);
+a1 = gca();
+a1.data_bounds = [CAmin, Tmin ; CAmax,Tmax];
+
+// CONDICIONES INICIALES
+CAini = 0.000E+00; //kmol/m3
+Tini  = 3.100E+02;; // K
+xini = [CAini;Tini];
+
+// TIEMPO
+tfin = 1.000E+02; dt = 1.000E-01; t = 0:dt:tfin; //s
 
 // RESOLVER
-[xee,fxee,info] = fsolve(xeeguess,f)
-CAee = xee(1)
-Tee = xee(2)
+x = ode(xini,0,t,f);
+CA = x(1,:); CAee = CA($)
+T  = x(2,:); Tee = T($)
 
 // GRÁFICAS
 scf(1);
-plot(CAee,Tee,'x');
+plot(CA,T,'o-');
+a1.data_bounds = [CAmin, Tmin ; CAmax,Tmax];
 
-// LINEALIZACIÓN 
-// Sistema no lineal   =>    Sistema lineal
-// dxdt = f(x)         =>    dxddt  = A*xd
-J = numderivative(f,xee); // Jacobiano
+scf(2); clf(2);
+subplot(2,1,1); plot(t,CA); xgrid; xtitle('CA')
+subplot(2,1,2); plot(t,T) ; xgrid; xtitle('T')
 
-// ESTABILIDAD DE UN SISTEMA LINEAL DE ECUACIONES DIFERENCIALES
-// Valores propios
-lambda = spec(J)
-
-// Critero de estabilidad
-Estable = and(real(lambda) < 0)
