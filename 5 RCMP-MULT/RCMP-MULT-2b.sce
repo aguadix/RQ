@@ -4,7 +4,7 @@ clear; clc;
 // 2)   A => C 
 // No adiabático
 // Estado estacionario
-// https://youtu.be/...
+// https://youtu.be/pV-VRka1xeQ
 
 // SISTEMA DE ECUACIONES ALGEBRAICAS
 function dxdt = f(x)
@@ -31,21 +31,21 @@ function dxdt = f(x)
 endfunction
 
 // CONSTANTES
-V   =  1.000E-01; // L
-F   =  1.000E-02; // L/s 	
-CA0 =  1.000E+01; // mol/L  
-T0  =  3.180E+02; // K
-TJ  =  3.180E+02; // K
-UA  =  3.710E+02; // J/(s*K) 
-CP  =  4.180E+00; // J/(g*K)
-RHO =  1.000E+03; // g/L
-k01 =  1.000E+16; // L/(s*mol)
-E1  =  1.200E+05; // J/mol 
-H1  = -1.130E+05; // J/mol
-k02 =  9.500E+12; // 1/s
-E2  =  8.800E+04; // J/mol 
-H2  = -8.370E+04; // J/mol
-R   =  8.314E+00; // J/(mol*K)
+V   =  0.1; // L
+F   =  0.01; // L/s 	
+CA0 =  10; // mol/L  
+T0  =  318; // K
+TJ  =  318; // K
+UA  =  371; // J/(s*K) 
+CP  =  4.18; // J/(g*K)
+RHO =  1000; // g/L
+k01 =  1E16; // L/(s*mol)
+E1  =  1.2E5; // J/mol 
+H1  = -1.13E5; // J/mol
+k02 =  9.5E12; // 1/s
+E2  =  8.8E4; // J/mol 
+H2  = -8.37E4; // J/mol
+R   =  8.314; // J/(mol*K)
 
 // SOLUCIÓN SUPUESTA
 CAeeguess = 1.000E+01; // mol/L 
@@ -63,7 +63,7 @@ plot(CAee,Tee,'x');
 
 // LINEALIZACIÓN 
 // Sistema no lineal   =>    Sistema lineal
-// dxdt = f(x)         =>    dxddt  = A*xd
+// dxdt = f(x)         =>    dxddt  = J*xd
 J = numderivative(f,xee); // Jacobiano
 
 // ESTABILIDAD DE UN SISTEMA LINEAL DE ECUACIONES DIFERENCIALES

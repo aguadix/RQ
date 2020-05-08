@@ -4,7 +4,7 @@ clear; clc;
 // 2)   A => C 
 // No adiabático
 // Dinámica
-// https://youtu.be/...
+// https://youtu.be/uVSN_mFonxE
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
@@ -31,37 +31,35 @@ function dxdt = f(t,x)
 endfunction
 
 // CONSTANTES
-V   =  1.000E-01; // L
-F   =  1.000E-02; // L/s 	
-CA0 =  1.000E+01; // mol/L  
-T0  =  3.180E+02; // K
-TJ  =  3.180E+02; // K
-UA  =  3.710E+02; // J/(s*K) 
-CP  =  4.180E+00; // J/(g*K)
-RHO =  1.000E+03; // g/L
-k01 =  1.000E+16; // L/(s*mol)
-E1  =  1.200E+05; // J/mol 
-H1  = -1.130E+05; // J/mol
-k02 =  9.500E+12; // 1/s
-E2  =  8.800E+04; // J/mol 
-H2  = -8.370E+04; // J/mol
-R   =  8.314E+00; // J/(mol*K)
+V   =  0.1; // L
+F   =  0.01; // L/s 	
+CA0 =  10; // mol/L  
+T0  =  318; // K
+TJ  =  318; // K
+UA  =  371; // J/(s*K) 
+CP  =  4.18; // J/(g*K)
+RHO =  1000; // g/L
+k01 =  1E16; // L/(s*mol)
+E1  =  1.2E5; // J/mol 
+H1  = -1.13E5; // J/mol
+k02 =  9.5E12; // 1/s
+E2  =  8.8E4; // J/mol 
+H2  = -8.37E4; // J/mol
+R   =  8.314; // J/(mol*K)
 
 // CAMPO VECTORIAL
 scf(1);
-CAmin = 0.000E+00; dCA = 5.000E-01; CAmax =  1.000E+01;  // mol/L
-Tmin  = 3.100E+02; dT  = 2.000E+00;  Tmax  = 3.500E+02;  // K 
+CAmin = 0;   dCA = 0.5; CAmax =  10;  // mol/L
+Tmin  = 310; dT  = 2;    Tmax  = 350; // K 
 fchamp(f,0,CAmin:dCA:CAmax,Tmin:dT:Tmax);
-a1 = gca();
-a1.data_bounds = [CAmin, Tmin ; CAmax,Tmax];
 
 // CONDICIONES INICIALES
-CAini = 0.000E+00; //kmol/m3
-Tini  = 3.100E+02;; // K
+CAini = 0; // mol/L
+Tini  = 310; // K
 xini = [CAini;Tini];
 
 // TIEMPO
-tfin = 1.000E+02; dt = 1.000E-01; t = 0:dt:tfin; //s
+tfin = 100; dt = 0.1; t = 0:dt:tfin; //s
 
 // RESOLVER
 x = ode(xini,0,t,f);
@@ -71,9 +69,10 @@ T  = x(2,:); Tee = T($)
 // GRÁFICAS
 scf(1);
 plot(CA,T,'o-');
+a1 = gca;
 a1.data_bounds = [CAmin, Tmin ; CAmax,Tmax];
 
 scf(2); clf(2);
-subplot(2,1,1); plot(t,CA); xgrid; xtitle('CA')
-subplot(2,1,2); plot(t,T) ; xgrid; xtitle('T')
+subplot(2,1,1); plot(t,CA); xgrid; xtitle('CA');
+subplot(2,1,2); plot(t,T) ; xgrid; xtitle('T');
 
