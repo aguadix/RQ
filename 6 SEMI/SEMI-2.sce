@@ -22,8 +22,10 @@ function dxdt = f(t,x)
     // Velocidad de reacción
     r = k*CA*CB
     // Caudal de alimentación    
-    if t < tfin/2 then F = FB;
-       else F = 0;
+    if t < tfin/2 then 
+        F = FB;  // Semicontinuo
+    else 
+        F = 0;   // Continuo
     end
     // Balance de materia global
     // d(V*RHO) = F*RHO
@@ -37,7 +39,7 @@ function dxdt = f(t,x)
     // Balance de energía
     // d(V*RHO*CP*T)dt = F*RHO*CP*TO - H*r*V
     dVTdt = F*T0 - H*r*V/(RHO*CP)
-    // Derivdas
+    // Derivadas
     dxdt(1) = dVdt
     dxdt(2) = dNAdt
     dxdt(3) = dNBdt
@@ -55,7 +57,8 @@ H = -8E4; // cal/mol
 
 // CONDICIONES INICIALES
 Vini = 500; // L
-NAini = 500; NBini = 0; NCini = 0; // mol
+CAini = 1; // mol/L
+NAini = Vini*CAini; NBini = 0; NCini = 0; // mol
 Tini = 350; // K
 xini = [Vini;NAini; NBini; NCini; Vini*Tini];
 
@@ -68,14 +71,6 @@ V  = x(1,:); Vfin = V($)
 NA = x(2,:); NAfin = NA($)
 NB = x(3,:); NBfin = NB($)
 NC = x(4,:); NCfin = NC($)
-VT = x(5,:);
-T = VT./V; Tfin = T($)
-
-[Tmax,indexTmax] = max(T)
-tTmax = t(indexTmax)
-
-[Tmin,indexTmin] = min(T)
-tTmin = t(indexTmin)
 
 // GRÁFICAS
 scf(1); clf(1);
@@ -86,13 +81,50 @@ scf(2); clf(2);
 plot(t,NA,t,NB,t,NC);
 xgrid; xtitle('SEMI-2','t','NA(azul), NB(verde), NC(rojo)');
 
+// TEMPERATURA
 scf(3); clf(3);
-plot(t,T,tTmax,Tmax,'ro',tTmin,Tmin,'ro');
 xgrid; xtitle('SEMI-2','t','T');
 
+VT = x(5,:);
+T = VT./V; Tfin = T($)
+plot(t,T,);
+
+// Máximo global
+[Tmax,indexTmax] = max(T)
+tTmax = t(indexTmax)
+plot(tTmax,Tmax,'ro');
+
+// Mínimo global
+[Tmin,indexTmin] = min(T)
+tTmin = t(indexTmin)
+plot(tTmin,Tmin,'ro');
+
+// Derivada
+for i = 1:length(T)-1
+    dTdt(i) = (T(i+1)-T(i))/dt;
+end
+
+// Máximos locales
+for i = 1:length(dTdt)-1
+    if dTdt(i)>0 & dTdt(i+1)<0 then
+         Tmaxl($+1) = T(i+1)
+        tTmaxl($+1) = t(i+1)
+    end
+end
+plot(tTmaxl,Tmaxl,'rx');
+
+// Mínimos locales
+for i = 1:length(dTdt)-1
+    if dTdt(i)<0 & dTdt(i+1)>0 then
+         Tminl($+1) = T(i+1)
+        tTminl($+1) = t(i+1)
+    end
+end
+plot(tTminl,Tminl,'rx');
+
+// Tini-3 < T < Tini+3
 Tmaxtest = Tmax < Tini+3
 Tmintest = Tmin > Tini-3
-
 scf(4);
 if Tmaxtest & Tmintest then
     plot([T0,T0],[Tmin,Tmax],'go-');

@@ -22,8 +22,10 @@ function dxdt = f(t,x)
     r1 = k1*CA*CB
     r2 = k2*CA*CB^2
     // Caudal de alimentación
-    if t < tB then F = FB;
-       else F = 0;
+    if t < tB then 
+        F = FB;  // Semicontinuo
+    else 
+        F = 0;   // Discontinuo
     end
     // Balance de materia global
     // d(V*RHO) = F*RHO
@@ -52,7 +54,8 @@ CB0 = 1; // mol/L
 
 // CONDICIONES INICIALES
 Vini = 0.5; // L
-NAini = 1; NBini = 0; NPini = 0; NQini = 0; // mol
+CAini = 2; // mol/L
+NAini = Vini*CAini; NBini = 0; NPini = 0; NQini = 0; // mol
 xini = [Vini;NAini; NBini; NPini; NQini];
 
 // TIEMPO
