@@ -3,6 +3,7 @@ clear; clc;
 // A + B => C
 // Adiabático
 // Dinámica
+// https://youtu.be/Ho6kETvBt5o
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
