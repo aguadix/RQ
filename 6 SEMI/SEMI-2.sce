@@ -26,7 +26,7 @@ function dxdt = f(t,x)
     if t < tfin/2 then 
         F = FB;  // Semicontinuo
     else 
-        F = 0;   // Continuo
+        F = 0;   // Discontinuo
     end
     // Balance de materia global
     // d(V*RHO) = F*RHO
