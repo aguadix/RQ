@@ -1,8 +1,6 @@
-clear; // Borra variables
-clc;   //  Limpia consola
+clear; clc;
 // INTRO-1.sce
 // RESOLUCIÓN NUMÉRICA DE UN SISTEMA DE ECUACIONES ALGEBRAICAS
-// https://youtu.be/5HLUZHmrrww
 
 // Sistema de ecuaciones algebraicas
 function y = f(x)

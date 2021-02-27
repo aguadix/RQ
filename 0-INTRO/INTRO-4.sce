@@ -1,7 +1,6 @@
 clear; clc;
 // INTRO-4.sce
 // CAMPO VECTORIAL DE UN SISTEMA DE ECUACIONES DIFERENCIALES DE 2 VARIABLES
-// https://youtu.be/J3SZCKHhP0Q
 
 function dxdt = f(t,x)
     dxdt(1) = -2*x(1) +   x(2)

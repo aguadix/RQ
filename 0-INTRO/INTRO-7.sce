@@ -1,7 +1,6 @@
 clear; clc;
 // INTRO-7.sce
 // PÉNDULO AMORTIGUADO
-// https://youtu.be/OXL2GF1siY4
 
 // Sistema de ecuaciones diferenciales
 function dxdt = f(t,x)

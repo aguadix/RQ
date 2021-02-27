@@ -1,5 +1,4 @@
-clear; // Borra variables
-clc;   //  Limpia consola
+clear; clc;
 // INTRO-3.sce
 // CÁLCULO NUMÉRICO DE LA MATRIZ JACOBIANA
 // https://youtu.be/5Hd1R05P6fM
