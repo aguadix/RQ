@@ -1,7 +1,6 @@
 clear; clc;
 // INTRO-3.sce
 // CÁLCULO NUMÉRICO DE LA MATRIZ JACOBIANA
-// https://youtu.be/5Hd1R05P6fM
 
 // J = [df1dx1  df1dx2
 //      df2dx1  df2dx2]
