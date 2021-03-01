@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // INTRO-5.sce
 // ESTABILIDAD DE UN SISTEMA LINEAL DE ECUACIONES DIFERENCIALES
 

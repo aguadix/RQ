@@ -1,5 +1,5 @@
-clear; clc;
-// INTRO-3.sce
+clear; clc; 
+// INTRO-3.sce 
 // CÁLCULO NUMÉRICO DE LA MATRIZ JACOBIANA
 
 // J = [df1dx1  df1dx2
@@ -11,7 +11,7 @@ function y = f(x)
     y(2) = x(1)*x(2)^3
 endfunction
 
-// Punto de prueba
+// Punto de prueba 
 x = [1;%pi/4];
 fx = f(x)
 
@@ -26,10 +26,10 @@ endfunction
 Jax = Ja(x)
 
 // (b) Numérico
-h = 1E-6;
+dx = [1E-6 1E-6]
 function dfdx = Jn(x)
-    dfdx(:,1) = (f([x(1)+h,x(2)]) - f([x(1),x(2)])) / h
-    dfdx(:,2) = (f([x(1),x(2)+h]) - f([x(1),x(2)])) / h
+    dfdx(:,1) = (f([x(1)+dx(1),x(2)])       - f([x(1),x(2)])) / dx(1)
+    dfdx(:,2) = (f([x(1)      ,x(2)+dx(2)]) - f([x(1),x(2)])) / dx(2)
 endfunction
 
 Jnx = Jn(x)

@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // INTRO-1.sce
 // RESOLUCIÓN NUMÉRICA DE UN SISTEMA DE ECUACIONES ALGEBRAICAS
 

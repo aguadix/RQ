@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // INTRO-7.sce
 // PÉNDULO AMORTIGUADO
 
