@@ -2,7 +2,6 @@ clear; clc;
 // RDMP-8.sce
 // A(g) + B(g) <=> C(g)
 // Isotermo, isobárico
-// https://youtu.be/gfmRI9Xrx1g
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)

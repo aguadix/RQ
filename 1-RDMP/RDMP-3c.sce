@@ -2,7 +2,6 @@ clear; clc;
 // RDMP-3c.sce
 // A => B
 // No adiabático: serpentín
-// https://youtu.be/LEUmbZkH8Sk
 
 // SECTORES
 N = 10; // divisiones del serpentín

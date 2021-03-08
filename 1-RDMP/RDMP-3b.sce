@@ -2,7 +2,6 @@ clear; clc;
 // RDMP-3b.sce
 // A => B
 // No adiabático: camisa a temperatura variable
-// https://youtu.be/ntQT8U1jY1M
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
