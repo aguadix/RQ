@@ -3,7 +3,6 @@ clear; clc;
 // A => B
 // No adiabático
 // Método gráfico
-// https://youtu.be/PwqRz6xbP_A
 
 // CONSTANTES
 CP = 0.8; // cal/(g*K)

@@ -3,7 +3,6 @@ clear; clc;
 // A + B <=> C
 // Isotermo
 // Estado estacionario
-// https://youtu.be/sygA7aWV5qg
 
 // SISTEMA DE ECUACIONES ALGEBRAICAS
 function dxdt = f(x)

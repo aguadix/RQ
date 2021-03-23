@@ -3,7 +3,6 @@ clear; clc;
 // A + B <=> C
 // Isotermo
 // Dinámica
-// https://youtu.be/j-MNErgokXY
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
