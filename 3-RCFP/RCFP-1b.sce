@@ -3,7 +3,6 @@ clear; clc;
 // A + B <=> C
 // Adiabático
 // Estado estacionario
-// https://youtu.be/NgBkBBFoJRE
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdtau = f(tau,x)

@@ -3,7 +3,7 @@ clear; clc;
 // A + B => 2 B
 // Isotermo
 // Estado estacionario
-// Recirculación
+// Recirculación 
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdtau = f(tau,x)

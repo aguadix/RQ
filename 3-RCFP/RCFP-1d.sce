@@ -4,7 +4,6 @@ clear; clc;
 // Adiabático
 // Estado estacionario
 // 2 reactores con enfriamiento intermedio
-// https://youtu.be/pVZxy11Z9EQ
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdtau = f(tau,x)
