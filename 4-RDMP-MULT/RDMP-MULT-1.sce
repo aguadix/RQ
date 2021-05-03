@@ -5,7 +5,6 @@ clear; clc;
 // 3) C => B
 // 4) B => D
 // Isotermo
-// https://youtu.be/SWH9SzCHgCw
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
@@ -63,20 +62,17 @@ xgrid; xtitle('RDMP-MULT-1','t','CA(azul), CB(verde), CC(rojo), CD(cian)');
 
 indexA = find(CA > 0.5);
 tA = dt*length(indexA)
-plot(t(indexA),CA(indexA),'go');
+plot(t(indexA),CA(indexA),'bo');
 
 indexB = find(CB > 0.15 & CB < 0.20);
 tB = dt*length(indexB)
 plot(t(indexB),CB(indexB),'go');
 
-for i = 1:length(t)
-    dxdt(:,i) = f(t(i),x(:,i));
-end
-dCCdt = dxdt(3,:);
+dCCdt = diff(CC)/dt;
 indexC = find(dCCdt > 0);
 tC = dt*length(indexC)
-plot(t(indexC),CC(indexC),'go');
+plot(t(indexC),CC(indexC),'ro');
 
 indexD = find(CD == max(CA,CB,CC,CD));
 tD = dt*length(indexD)
-plot(t(indexD),CD(indexD),'go');
+plot(t(indexD),CD(indexD),'co');
