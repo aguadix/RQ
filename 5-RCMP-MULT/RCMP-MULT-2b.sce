@@ -4,7 +4,6 @@ clear; clc;
 // 2)   A => C 
 // No adiabático
 // Estado estacionario
-// https://youtu.be/pV-VRka1xeQ
 
 // SISTEMA DE ECUACIONES ALGEBRAICAS
 function dxdt = f(x)

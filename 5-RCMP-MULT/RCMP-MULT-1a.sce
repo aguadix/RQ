@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // RCMP-MULT-1a.sce
 // 1) A + B => P*
 // 2) P + B => Q

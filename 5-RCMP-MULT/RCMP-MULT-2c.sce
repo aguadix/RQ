@@ -4,7 +4,6 @@ clear; clc;
 // 2)   A => C 
 // No adiabático
 // Dinámica
-// https://youtu.be/uVSN_mFonxE
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)

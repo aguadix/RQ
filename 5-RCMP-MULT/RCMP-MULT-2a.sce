@@ -4,7 +4,6 @@ clear; clc;
 // 2)   A => C 
 // No adiabático
 // Método gráfico
-// https://youtu.be/SXK8s3CO6gU
 
 // CONSTANTES
 V   =  0.1; // L
