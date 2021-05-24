@@ -4,7 +4,6 @@ clear; clc;
 // 2) A + B => Q
 // Isotermo
 // Dinámica
-// https://youtu.be/MMYf4xuQOyA
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
