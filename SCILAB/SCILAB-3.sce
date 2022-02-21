@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // SCILAB-3.sce
 
 // Gráficas

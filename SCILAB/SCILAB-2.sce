@@ -3,24 +3,22 @@ clear; clc;
 
 // Funciones
 
-// 2 entradas, 4 salidas
+// Seno como suma infinita
 
-function [s,r,m,d] = f(a,b)
-  s = a+b
-  r = a-b
-  m = a*b
-  d = a/b
+function y = sine(x,N)
+  n = 1:N
+  y = sum((-1)^(n-1)./factorial(2*n-1).*x^(2*n-1))
 endfunction
 
-a = 6;
-b = 2;
-[s,r,m,d] = f(a,b) 
+x = %pi/4;
+N = 10;
+y = sine(x,N)
 
 
 // Sucesión de Fibonacci
 
 function v = fib(n)
-  v(1) = 0;
+  v(1) = 1;
   v(2) = 1;
   for i = 3:n
     v(i) = v(i-1) + v(i-2)
@@ -29,6 +27,7 @@ endfunction
 
 n = 10;
 v = fib(n)
+
 
 // Multiplicación de matrices
 
