@@ -10,7 +10,7 @@ function y = sine(x,N)
   y = sum((-1)^(n-1)./factorial(2*n-1).*x^(2*n-1))
 endfunction
 
-x = %pi/4;
+x = %pi/6;
 N = 10;
 y = sine(x,N)
 

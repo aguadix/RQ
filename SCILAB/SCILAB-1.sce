@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // SCILAB-1.sce
 
 // Escalares
