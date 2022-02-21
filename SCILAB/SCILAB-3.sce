@@ -8,7 +8,7 @@ y = exp(-0.5*t).*sin(2*t);
 
 scf(1); clf(1);
 plot(t,y);
-xgrid; xtitle('SCILAB-3','x','y');
+xgrid; xtitle('SCILAB-3','t','y');
 
 // Objetivos
 yobj = 0.5;
@@ -49,3 +49,22 @@ indexyi = find(d2y(1:$-1).*d2y(2:$)<0) + 1;
 tyi = t(indexyi)
 yi = y(indexyi)
 plot(tyi,yi,'gx');
+
+// Integral
+indexI = 1:indexy0(1);
+tI = t(indexI);
+yI = y(indexI);
+I = inttrap(tI,yI)
+
+// Derivada
+t0 = 3;
+y0 = y(t==t0)
+plot(t0,y0,'m.')
+dydt = dy/dt;
+dydt0 = dydt(t==t0)
+yt = y0 + dydt0*(t-t0);
+plot(t,yt,'m--')
+
+// Ejes
+a1 = gca;
+a1.data_bounds = [0,-1;tfin,1];
