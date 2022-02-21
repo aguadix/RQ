@@ -45,24 +45,3 @@ endfunction
 A = [1 -1 3; 3 0 1]
 B = [2 0; 2 1; 1 -1]
 C = mmult(A,B)
-
-// Cambios de signo en un vector
-
-function indexcs1 = cs1(v)
-  for i = 1:length(v)-1
-    if v(i)*v(i+1) < 0 then
-      indexcs1($+1) = i+1
-    end
-  end
-endfunction
-
-v = [1 3 5 -1 1 2 7 2 -2]
-indexcs1 = cs1(v)
-
-// Cambios de signo en un vector (alternativa)
-
-function indexcs2 = cs2(v)
-  indexcs2 = find(v(1:$-1).*v(2:$)<0) + 1
-endfunction
-
-indexcs2 = cs2(v)

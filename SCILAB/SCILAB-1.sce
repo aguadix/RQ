@@ -34,15 +34,17 @@ vmin = min(v)
 index1 = find(v==1)
 v1 = v(index1)
 
-index2 = find(v<0)
-v2 = v(index2)
+indexneg = find(v<0)
+vneg = v(indexneg)
 
-index3 = find(v>0 & v<3)
-v3 = v(index3)
+index03 = find(v>0 & v<3)
+v03 = v(index03)
 
 vsum = sum(v)
 vprod = prod(v)
 
+dv = diff(v)
+d2v = diff(v,2)
 
 // Matrices
 A = [4 -2  6 
