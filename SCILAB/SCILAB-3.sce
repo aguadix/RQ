@@ -34,7 +34,8 @@ plot(tymin,ymin,'ro');
 // Ceros
 indexy0 = find(y(1:$-1).*y(2:$)<0) + 1;
 ty0 = t(indexy0)
-plot(ty0,0,'bo');
+y0 = y(indexy0)
+plot(ty0,y0,'bo');
 
 // Extremos
 dy = diff(y);
@@ -54,6 +55,7 @@ plot(tyi,yi,'gx');
 indexI = 1:indexy0(1);
 tI = t(indexI);
 yI = y(indexI);
+xfpoly(tI,yI,4)
 I = inttrap(tI,yI)
 
 // Derivada

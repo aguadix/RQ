@@ -63,7 +63,7 @@ Amax = max(A)
 [Amax,indexAmax] = max(A)
 
 Amin = min(A)
-[vmin,indexAmin] = min(A)
+[Amin,indexAmin] = min(A)
 
 B = a*A+b
 AB = A*B

@@ -43,4 +43,4 @@ endfunction
 
 A = [1 -1 3; 3 0 1]
 B = [2 0; 2 1; 1 -1]
-C = mmult(A,B)
+C = mmult(A,B) 
