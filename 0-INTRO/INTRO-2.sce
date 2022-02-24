@@ -45,4 +45,4 @@ plot(t,x,'.'); // Gráfica
 // (c) FUNCIÓN DE SCILAB - ode
 
 x = ode(xini,0,t,f);
-plot(t,x,'-'); // Gráfica
+plot(t,x,'-'); // Gráfica 

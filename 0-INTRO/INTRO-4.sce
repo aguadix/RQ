@@ -49,4 +49,4 @@ x = ode(xini,0,t,f);
 plot(x(1,:),x(2,:),'o-');
 
 // Función de Scilab: fchamp
-fchamp(f, 0, x1interval, x2interval);
+fchamp(f, 0, x1interval, x2interval); 

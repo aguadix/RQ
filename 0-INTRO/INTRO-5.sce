@@ -57,4 +57,4 @@ a1.data_bounds = [x1min,x2min ; x1max,x2max];
 // lambda = valores propios
 // v      = vectores propios 
 lambda = spec(A)
-Estable = and(real(lambda) < 0)
+Estable = and(real(lambda) < 0) 

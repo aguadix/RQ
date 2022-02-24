@@ -48,4 +48,4 @@ fx = f(x)  // Valor de la función en la solución
 
 // (b) FUNCIÓN DE SCILAB - fsolve 
 [x,fx,info] = fsolve(xguess,f)
-plot(x(1),x(2),'rx');
+plot(x(1),x(2),'rx'); 

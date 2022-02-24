@@ -42,4 +42,4 @@ J = numderivative(f,xee)
 // Derivadas aproximadas (sistema linealizado)
 dxddt = J*xd
 
-Error = (dxddt-dxdt)./dxdt
+Error = (dxddt-dxdt)./dxdt 
