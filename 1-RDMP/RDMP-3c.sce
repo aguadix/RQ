@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // RDMP-3c.sce
 // A => B
 // No adiabático: serpentín

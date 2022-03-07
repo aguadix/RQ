@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // RDMP-2.sce
 // A => B
 // Adiabático
