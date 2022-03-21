@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // RDMP-8.sce
 // A(g) + B(g) <=> C(g)
 // Isotermo, isobárico

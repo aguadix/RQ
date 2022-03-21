@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // RDMP-7.sce
 // A(g) => 2 B(g)
 // Isotermo, isobárico

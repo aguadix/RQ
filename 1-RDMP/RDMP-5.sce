@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // RDMP-5.sce
 // A + B <=> C
 // Adiabático
@@ -51,24 +51,28 @@ Tini = 300; // K
 xini = [CAini; CBini; CCini; Tini];
 
 // TIEMPO
-dt = 0.1;
-for tfin = 100:100:5000
-    t = 0:dt:tfin; // h
-    // RESOLVER
-    x = ode(xini,0,t,f);
-    xfin = x(:,$)
-    dxdtfin = f(tfin,xfin)
-    Equilibrio = abs(dxdtfin ./ xfin) < 1E-5
-    if Equilibrio then
-        break
-    end
-end
+dt = 0.1; tfin = 5000; t = 0:dt:tfin; // h
+
+toleq = 1E-5; ng = 1;
+function z = g(t,x)
+    z = max(abs(f(t,x))) - toleq
+endfunction
+
+// RESOLVER
+[x,rd] = ode("root", xini, 0, t, f, ng, g);
+teq = rd(1)
+t = t(1:find(t>teq,1));
 
 CA = x(1,:); CAeq = CA($)
 CB = x(2,:); CBeq = CB($)
 CC = x(3,:); CCeq = CC($)
 T  = x(4,:); Teq  = T($)
 XA = 1 - CA/CAini; XAeq = XA($)
+
+dCAdt = diff(CA)/dt;
+dCBdt = diff(CB)/dt;
+dCCdt = diff(CC)/dt;
+dTdt  = diff(T) /dt;
 
 XAobj = 0.5;
 indexXAobj = find(XA>XAobj,1);
@@ -83,11 +87,18 @@ scf(2); clf(2);
 plot(t,T);
 xgrid; xtitle('RDMP-5','t','T');
 
-scf(3);  
+scf(3); clf(3); 
+plot(t(1:$-1),abs(dCAdt),t(1:$-1),abs(dCBdt),t(1:$-1),abs(dCCdt),t(1:$-1),abs(dTdt));
+plot(teq,toleq,'ro'); 
+xgrid; xtitle('RDMP-5','t','|dCAdt| (azul), |dCBdt| (verde), |dCCdt| (rojo), |dTdt| (cian)');
+a3 = gca;
+a3.log_flags = "nln" ;
+
+scf(4);  
 plot(Tini,XAeq,'ro');
 xgrid; xtitle('RDMP-5','Tini','XAeq');
 
-scf(4);  
+scf(5);
 if XAeq > XAobj then
     plot(Tini,tXAobj,'ro');
 end

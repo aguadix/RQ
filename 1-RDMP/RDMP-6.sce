@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // RDMP-6.sce
 // A <=> B
 // Progresión óptima de temperatura
@@ -75,7 +75,6 @@ CA = x(1,:); CAfin = CA($)
 CB = x(2,:); CBfin = CB($)
 Topt = diff(x(3,:))/dt; Toptfin = Topt($)
 XA = 1 - CA/CAini; XAfin = XA($)
-
 
 indexToptTmax = find(Topt<Tmax-1E-6,1);
 tToptTmax = t(indexToptTmax)

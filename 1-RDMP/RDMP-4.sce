@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // RDMP-4.sce
 // 2 A <=> B
 // Isotermo
@@ -41,13 +41,15 @@ tfin = 100; dt = 0.1; t = 0:dt:tfin; // h
 
 // RESOLVER
 x = ode(xini,0,t,f);
-xfin = x(:,$)
-dxdtfin = f(tfin,xfin)
-Equilibrio = abs(dxdtfin ./ xfin) < 1E-5
-
 CA = x(1,:); CAeq = CA($)
 CB = x(2,:); CBeq = CB($)
-XA = 1 - CA/CAini; XAeq = XA($)
+
+dCAdt = diff(CA)/dt;
+dCBdt = diff(CB)/dt;
+
+toleq = 1E-5;
+indexeq = find(max((abs(dCAdt),abs(dCBdt)))<toleq,1);
+teq = t(indexeq)
 
 indexCACB = find(CA<CB,1);
 tCACB = t(indexCACB)
@@ -57,3 +59,10 @@ CACACB = CA(indexCACB)
 scf(1); clf(1); 
 plot(t,CA,t,CB,tCACB,CACACB,'ro');
 xgrid; xtitle('RDMP-4','t','CA(azul), CB(verde)');
+
+scf(2); clf(2); 
+plot(t(1:$-1),abs(dCAdt),t(1:$-1),abs(dCBdt));
+plot(teq,toleq,'ro'); 
+xgrid; xtitle('RDMP-4','t','|dCAdt| (azul), |dCBdt| (verde)');
+a2 = gca;
+a2.log_flags = "nln" ;
