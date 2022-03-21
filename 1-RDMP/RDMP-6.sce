@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // RDMP-6.sce
 // A <=> B
 // Progresión óptima de temperatura
@@ -9,7 +9,7 @@ clear; clc;
 kd0 = 1.94E15; ki0 = 6.26E19; // h-1
 Ed = 44500; Ei = 59500; // cal/mol
 R = 1.987; // cal/(mol*K)
-Tmin = 500; dT = 0.1; Tmax = 650; T = Tmin:dT:Tmax; // K
+Tmin = 500.0; dT = 0.1; Tmax = 650.0; T = Tmin:dT:Tmax; // K
 kd = kd0*exp(-Ed./(R*T)); // Ecuación de Arrhenius directa
 ki = ki0*exp(-Ei./(R*T)); // Ecuación de Arrhenius inversa
 
@@ -33,6 +33,9 @@ Topt = T(indexTopt)
 scf(1);  
 plot(T,r,Topt,rmax,'ro');
 xgrid; xtitle('RDMP-6','T','r');
+a1 = gca;
+a1.log_flags = "nln" ;
+
 
 // PARTE 2
 
@@ -70,15 +73,11 @@ tfin = 5; dt = 0.01; t = 0:dt:tfin; // h
 x = ode(xini,0,t,f);
 CA = x(1,:); CAfin = CA($)
 CB = x(2,:); CBfin = CB($)
+Topt = diff(x(3,:))/dt; Toptfin = Topt($)
 XA = 1 - CA/CAini; XAfin = XA($)
 
-for i = 1:length(t)
-    dxdt(:,i) = f(t(i),x(:,i));
-end
 
-Topt = dxdt(3,:); Toptfin = Topt($)
-
-indexToptTmax = find(Topt<Tmax,1);
+indexToptTmax = find(Topt<Tmax-1E-6,1);
 tToptTmax = t(indexToptTmax)
 XAToptTmax = XA(indexToptTmax)
 ToptTmax = Topt(indexToptTmax)
@@ -89,5 +88,5 @@ plot(t,XA,tToptTmax,XAToptTmax,'ro');
 xgrid; xtitle('RDMP-6','t','XA');
 
 scf(3); clf(3); 
-plot(t,Topt,tToptTmax,ToptTmax,'ro');
+plot(t(1:$-1),Topt,tToptTmax,ToptTmax,'ro');
 xgrid; xtitle('RDMP-6','t','Topt');

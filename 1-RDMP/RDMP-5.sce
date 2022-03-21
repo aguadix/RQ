@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // RDMP-5.sce
 // A + B <=> C
 // Adiabático
@@ -51,10 +51,9 @@ Tini = 300; // K
 xini = [CAini; CBini; CCini; Tini];
 
 // TIEMPO
-dt= 0.1;
+dt = 0.1;
 for tfin = 100:100:5000
     t = 0:dt:tfin; // h
-
     // RESOLVER
     x = ode(xini,0,t,f);
     xfin = x(:,$)
