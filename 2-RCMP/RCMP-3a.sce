@@ -41,17 +41,12 @@ plot(CAbm,T,'r-');
 // F*RHO*CP*(T0-T) - Q = H*k*CA*V
 CAbe = (F*RHO*CP*(T0-T) - Q)./(H*k*V); 
 plot(CAbe,T,'r--');
-
 a1 = gca;
 a1.data_bounds = [CAmin, Tmin ; CAmax,Tmax];
 
 // LOCALIZACIÓN DE ESTADOS ESTACIONARIOS
-Nee = 0;
-for i = 1:length(T)-1
-    if sign(CAbm(i)-CAbe(i)) <> sign(CAbm(i+1)-CAbe(i+1)) then
-        Nee = Nee+1
-        Teeg(Nee) = T(i)
-        CAeeg(Nee) = CAbm(i)
-        plot(CAeeg,Teeg,'ro');
-    end
-end
+y = CAbm-CAbe;
+indexy0 = find(y(1:$-1).*y(2:$)<0)+1;
+CAeeg = CAbm(indexy0)
+Teeg = T(indexy0)
+plot(CAeeg,Teeg,'ro');

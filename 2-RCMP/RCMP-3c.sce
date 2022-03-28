@@ -45,8 +45,6 @@ scf(1);
 CAmin = 0; dCA = 0.1; CAmax = 3;
 Tmin = 280; dT = 10; Tmax = 500;
 fchamp(f,0,CAmin:dCA:CAmax,Tmin:dT:Tmax);
-a1 = gca;
-a1.data_bounds = [CAmin, Tmin ; CAmax,Tmax];
 
 // CONDICIONES INICIALES
 CAini = 0; // mol/L
@@ -64,4 +62,5 @@ T = x(2,:); Tee = T($)
 // TRAYECTORIA
 scf(1);
 plot(CA,T,'o-');
+a1 = gca;
 a1.data_bounds = [CAmin, Tmin ; CAmax,Tmax];

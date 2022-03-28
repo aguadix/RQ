@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // RCMP-1b.sce
 // A => B
 // Isotermo
@@ -39,7 +39,8 @@ tfin = 20; dt = 0.1; t = 0:dt:tfin; // h
 x = ode(xini,0,t,f);
 xfin = x(:,$)
 dxdtfin = f(tfin,xfin)
-Estacionario = abs(dxdtfin ./ xfin) < 1E-5
+tolee = 1E-5;
+Estacionario = abs(dxdtfin./xfin) < tolee
     
 CA = x(1,:); CAee = CA($)
 CB = x(2,:); CBee = CB($)

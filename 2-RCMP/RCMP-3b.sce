@@ -65,4 +65,3 @@ lambda = spec(J)
 
 // Critero de estabilidad
 Estable = and(real(lambda) < 0)
-
