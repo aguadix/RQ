@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // RCFP-2.sce
 // A + B => 2 B
 // Isotermo
