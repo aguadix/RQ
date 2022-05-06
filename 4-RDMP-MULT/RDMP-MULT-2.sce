@@ -59,7 +59,7 @@ CP = 1; // kcal/(kg*K)
 Tcold = 293; Thot = 353; // K 
 
 // Operación de la camisa
-op = 4;
+op = 1;
 select op
     case 1 then TJ1 = Tcold; TJ2 = Tcold; // K
     case 2 then TJ1 = Thot;  TJ2 = Thot;  // K

@@ -60,11 +60,13 @@ scf(1); clf(1);
 plot(t,CA,t,CB,t,CC,t,CD);
 xgrid; xtitle('RDMP-MULT-1','t','CA(azul), CB(verde), CC(rojo), CD(cian)');
 
-indexA = find(CA > 0.5);
+CAobj = 0.5;
+indexA = find(CA > CAobj);
 tA = dt*length(indexA)
 plot(t(indexA),CA(indexA),'bo');
 
-indexB = find(CB > 0.15 & CB < 0.20);
+CBlo = 0.15; CBup = 0.20;
+indexB = find(CB > CBlo & CB < CBup);
 tB = dt*length(indexB)
 plot(t(indexB),CB(indexB),'go');
 
