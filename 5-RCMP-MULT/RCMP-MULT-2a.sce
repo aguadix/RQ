@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // RCMP-MULT-2a.sce
 // 1) 2 A => B
 // 2)   A => C 
@@ -52,10 +52,10 @@ a1 = gca;
 a1.data_bounds = [CAmin, Tmin ; CAmax,Tmax];
 
 // LOCALIZACIÓN DE ESTADOS ESTACIONARIOS
-for i = 1:length(T)-1
-    if sign(CAbm(i)-CAbe(i)) <> sign(CAbm(i+1)-CAbe(i+1)) then
-        Teeg = T(i)
-        CAeeg = CAbm(i)
-        plot(CAeeg,Teeg,'ro');
-    end
-end
+
+y = CAbm-CAbe;
+indexy0 = find(y(1:$-1).*y(2:$)<0)+1;
+CAeeg = CAbm(indexy0)
+Teeg = T(indexy0)
+plot(CAeeg,Teeg,'ro');
+
