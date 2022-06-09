@@ -28,7 +28,7 @@ function dxdt = f(t,x)
         F = 0;   // Discontinuo
     end
     // Balance de materia global
-    // d(V*RHO) = F*RHO
+    // d(V*RHO)dt = F*RHO
     dVdt = F
     // Balance de materia para A    
     dNAdt = (-r1-r2)*V

@@ -28,7 +28,7 @@ function dxdt = f(t,x)
         F = 0;   // Discontinuo
     end
     // Balance de materia global
-    // d(V*RHO) = F*RHO
+    // d(V*RHO)dt = F*RHO
     dVdt = F
     // Balance de materia para A
     dNAdt = -r*V
@@ -107,8 +107,11 @@ T0interval = 273:0.1:300; // K
 for i = 1:length(T0interval)
     T0 = T0interval(i);
     x = ode(xini,0,t,f);
-    VT = x(5,:); T = VT./V; 
-    Tmax(i) = max(T); Tmin(i) = min(T); 
+    VT = x(5,:);
+    V  = x(1,:); 
+    T = VT./V; 
+    Tmax(i) = max(T); 
+    Tmin(i) = min(T); 
 end
 
 scf(4); clf(4);
