@@ -67,12 +67,12 @@ tTmax = t(indexTmax)
 // GRÁFICAS
 scf(1); clf(1);
 plot(t,CA);
-xgrid; xtitle('RDMP-3b','t','CA');
+xgrid; xlabel('t'); legend('CA',-2,%f);
 
 scf(2); clf(2);
-plot(t,T,tTmax,Tmax,'ro',t,TJ);
-xgrid; xtitle('RDMP-3b','t','T(azul), TJ(verde)');
+plot(t,T,'r-',t,TJ,'r:',tTmax,Tmax,'ro');
+xgrid; xlabel('t'); legend('T','TJ',-2,%f);
 
 scf(3); 
 plot(FJ,Tmax,'ro');
-xgrid; xtitle('RDMP-3b','FJ','Tmax');
+xgrid; xlabel('FJ'); ylabel('Tmax');

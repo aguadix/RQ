@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // RDMP-5.sce
 // A + B <=> C
 // Adiabático
@@ -51,55 +51,42 @@ Tini = 300; // K
 xini = [CAini; CBini; CCini; Tini];
 
 // TIEMPO
-dt = 0.1; tfin = 5000; t = 0:dt:tfin; // h
-
-toleq = 1E-5; ng = 1;
-function z = g(t,x)
-    z = max(abs(f(t,x))) - toleq
-endfunction
+dt = 0.1; tfin = 500; t = 0:dt:tfin; // h
 
 // RESOLVER
-[x,rd] = ode("root", xini, 0, t, f, ng, g);
-teq = rd(1)
-t = t(1:find(t>teq,1));
+x = ode(xini,0,t,f);
+CA = x(1,:); CAfin = CA($)
+CB = x(2,:); CBfin = CB($)
+CC = x(3,:); CCfin = CC($)
+T  = x(4,:); Tfin  = T($)
+XA = 1 - CA/CAini; XAfin = XA($)
 
-CA = x(1,:); CAeq = CA($)
-CB = x(2,:); CBeq = CB($)
-CC = x(3,:); CCeq = CC($)
-T  = x(4,:); Teq  = T($)
-XA = 1 - CA/CAini; XAeq = XA($)
-
-dCAdt = diff(CA)/dt;
-dCBdt = diff(CB)/dt;
-dCCdt = diff(CC)/dt;
-dTdt  = diff(T) /dt;
-
-XAobj = 0.5;
-indexXAobj = find(XA>XAobj,1);
-tXAobj = t(indexXAobj)
+dTdt = diff(T)/dt;
+dTdteq = 1E-3; // K/h
+indexTeq = find(abs(dTdt)<dTdteq,1);
+tTeq = t(indexTeq)
+Teq = T(indexTeq)
 
 // GRÁFICAS
 scf(1); clf(1); 
 plot(t,CA,t,CB,t,CC); 
-xgrid; xtitle('RDMP-5','t','CA(azul), CB(verde), CC(rojo)');
+xgrid; xlabel('t'); legend('CA','CB','CC',-2,%f);
 
 scf(2); clf(2); 
-plot(t,T);
-xgrid; xtitle('RDMP-5','t','T');
+plot(t,T,'r-',tTeq,Teq,'r.');
+xgrid; xlabel('t'); legend('T',-2,%f);
+
+XATeq = XA(indexTeq)
+XAobj = 0.5;
+indexXAobj = find(XA>XAobj,1);
+tXAobj = t(indexXAobj)
 
 scf(3); clf(3); 
-plot(t(1:$-1),abs(dCAdt),t(1:$-1),abs(dCBdt),t(1:$-1),abs(dCCdt),t(1:$-1),abs(dTdt));
-plot(teq,toleq,'ro'); 
-xgrid; xtitle('RDMP-5','t','|dCAdt| (azul), |dCBdt| (verde), |dCCdt| (rojo), |dTdt| (cian)');
-a3 = gca;
-a3.log_flags = "nln" ;
+plot(t,XA,'m-',tTeq,XATeq,'m.',tXAobj,XAobj,'mo');
+xgrid; xlabel('t'); legend('XA',-2,%f);
 
-scf(4);  
-plot(Tini,XAeq,'ro');
-xgrid; xtitle('RDMP-5','Tini','XAeq');
-
-scf(5);
-if XAeq > XAobj then
-    plot(Tini,tXAobj,'ro');
-end
-xgrid; xtitle('RDMP-5','Tini','tXAobj');
+scf(4);
+subplot(211); plot(Tini,XATeq,'mo');
+xgrid; xlabel('Tini'); ylabel('XATeq');
+subplot(212); plot(Tini,tXAobj,'go');
+xgrid; xlabel('Tini'); ylabel('tXAobj');

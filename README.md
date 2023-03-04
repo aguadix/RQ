@@ -2,6 +2,6 @@
 
 Reactores Químicos
 
-Grado en Ingeniería Química (2021-2022)
+Grado en Ingeniería Química
 
 Código en [Scilab](https://www.scilab.org/)

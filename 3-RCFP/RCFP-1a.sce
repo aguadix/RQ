@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // RCFP-1a.sce
 // A + B <=> C
 // Isotermo
@@ -73,8 +73,8 @@ XA = 1 - CA/CA0; XAs = XA($)
 // GRÁFICAS
 scf(1); clf(1); 
 plot(l,CA,l,CB,l,CC);
-xgrid; xtitle('RCFP-1a','l','CA(azul), CB(verde), CC(rojo)');
+xgrid; xlabel('t'); legend('CA','CB','CC',-2,%f);
 
 scf(2); clf(2); 
-plot(l,XA);
-xgrid; xtitle('RCFP-1a','l','XA'); 
+plot(l,XA,'m');
+xgrid; xlabel('l'); legend('XA',-2,%f);

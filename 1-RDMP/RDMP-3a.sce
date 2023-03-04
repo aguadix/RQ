@@ -52,13 +52,12 @@ T = x(2,:); Tfin = T($)
 
 [Tmax,indexTmax] = max(T)
 tTmax = t(indexTmax)
-CATmax = CA(indexTmax)
 
 // GRÁFICAS
 scf(1); clf(1); 
-plot(t,CA,tTmax,CATmax,'ro');
-xgrid; xtitle('RDMP-3a','t','CA');
+plot(t,CA);
+xgrid; xlabel('t'); legend('CA',-2,%f);
 
 scf(2); clf(2); 
-plot(t,T,tTmax,Tmax,'ro');
-xgrid; xtitle('RDMP-3a','t','T');
+plot(t,T,'r-',tTmax,Tmax,'ro');
+xgrid; xlabel('t'); legend('T',-2,%f);

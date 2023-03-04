@@ -1,6 +1,7 @@
 clear; clc; 
 // RDMP-1.sce
 // A => B
+
 // Isotermo
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
@@ -39,10 +40,10 @@ CB = x(2,:); CBfin = CB($)
 XA = 1 - CA/CAini; XAfin = XA($)
 
 // GRÁFICAS
-scf(1); clf(1); 
-plot(t,XA);
-xgrid; xtitle('RDMP-1','t','XA');
-
-scf(2); clf(2);
+scf(1); clf(1);
 plot(t,CA,t,CB);
-xgrid; xtitle('RDMP-1','t','CA(azul), CB(verde)');
+xgrid; xlabel('t'); legend('CA','CB',-2,%f);
+
+scf(2); clf(2); 
+plot(t,XA,'m-');
+xgrid; xlabel('t'); legend('XA',-2,%f);

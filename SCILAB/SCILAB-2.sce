@@ -1,46 +1,82 @@
-clear; clc;
+clear; clc; 
 // SCILAB-2.sce
+
+// Constantes
+
+A = 1; alpha = 0.5; omega = 2;
 
 // Funciones
 
-// Seno como suma infinita
-
-function y = sine(x,N)
-  n = 1:N
-  y = sum((-1)^(n-1)./factorial(2*n-1).*x^(2*n-1))
+function y = f(t)
+    y = A*exp(-alpha*t).*sin(omega*t);
 endfunction
 
-x = %pi/6;
-N = 10;
-y = sine(x,N)
+dt = 0.001; tfin = 10; t = 0:dt:tfin;
+y = f(t);
 
+// Gráficas
+scf(1); clf(1);
+plot(t,y);
+xgrid; xlabel('t'); ylabel('y');
 
-// Sucesión de Fibonacci
+// Objetivos
+yobj = 0.5;
+indexyobj = find(y>yobj,1);
+tyobj = t(indexyobj)
+plot(tyobj,yobj,'b.');
 
-function v = fib(n)
-  v(1) = 1;
-  v(2) = 1;
-  for i = 3:n
-    v(i) = v(i-1) + v(i-2)
-  end
-endfunction
+ya = 0.1; yb = 0.2;
+indexyayb = find(y>ya & y<yb);
+tyayb = t(indexyayb);
+yyayb = y(indexyayb); 
+plot(tyayb,yyayb,'b.');
 
-n = 10;
-v = fib(n)
+// Máximo y mínimo global
+[ymax,indexymax] = max(y)
+tymax = t(indexymax)
+plot(tymax,ymax,'ro');
 
+[ymin,indexymin] = min(y)
+tymin = t(indexymin)
+plot(tymin,ymin,'ro');
 
-// Multiplicación de matrices
+// Ceros
+indexy0 = find(y(1:$-1).*y(2:$)<0) + 1;
+ty0 = t(indexy0)
+y0 = y(indexy0)
+plot(ty0,y0,'bo');
 
-function C = mmult(A,B)
-  [m,n] = size(A)
-  [n,p] = size(B)
-  for i = 1:m
-    for j = 1:p
-      C(i,j) = sum(A(i,:).*B(:,j)')
-    end
-  end
-endfunction
+// Extremos
+dy = diff(y);
+indexye = find(dy(1:$-1).*dy(2:$)<0) + 1;
+tye = t(indexye)
+ye = y(indexye)
+plot(tye,ye,'rx');
 
-A = [1 -1 3; 3 0 1]
-B = [2 0; 2 1; 1 -1]
-C = mmult(A,B) 
+// Puntos de inflexión
+d2y = diff(y,2);
+indexyi = find(d2y(1:$-1).*d2y(2:$)<0) + 1;
+tyi = t(indexyi)
+yi = y(indexyi)
+plot(tyi,yi,'gx');
+
+// Integral
+indexI = 1:indexy0(1);
+tI = t(indexI);
+yI = y(indexI);
+xfpoly(tI,yI,4)
+I = inttrap(tI,yI)
+
+// Derivada
+t0 = 3;
+y0 = y(t==t0)
+plot(t0,y0,'m.')
+dydt = dy/dt;
+dydt0 = dydt(t==t0)
+yt = y0 + dydt0*(t-t0);
+plot(t,yt,'m--')
+
+// Ejes
+a1 = gca;
+tlo = 0; tup = tfin; ylo = -1; yup = 1;
+a1.data_bounds = [tlo,ylo;tup,yup];

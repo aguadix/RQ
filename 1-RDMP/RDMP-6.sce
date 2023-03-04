@@ -1,9 +1,9 @@
-clear; clc;
+clear; clc; 
 // RDMP-6.sce
 // A <=> B
 // Progresión óptima de temperatura
 
-// PARTE 1
+// (a)
 
 // CONSTANTES
 kd0 = 1.94E15; ki0 = 6.26E19; // h-1
@@ -16,7 +16,7 @@ ki = ki0*exp(-Ei./(R*T)); // Ecuación de Arrhenius inversa
 // CONDICIONES INICIALES
 CAini = 1; CBini = 0; // mol/L
 
-XA = 0;
+XA = 0.0;
 
 CA = CAini - CAini*XA
 CB = CBini + CAini*XA
@@ -31,13 +31,12 @@ Topt = T(indexTopt)
 
 // GRÁFICAS
 scf(1);  
-plot(T,r,Topt,rmax,'ro');
-xgrid; xtitle('RDMP-6','T','r');
+plot(T,r,Topt,rmax,'bo');
+xgrid; xlabel('T'); ylabel('r');
 a1 = gca;
-a1.log_flags = "nln" ;
+a1.log_flags = "nl" ;
 
-
-// PARTE 2
+// (b)
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
@@ -76,16 +75,16 @@ CB = x(2,:); CBfin = CB($)
 Topt = diff(x(3,:))/dt; Toptfin = Topt($)
 XA = 1 - CA/CAini; XAfin = XA($)
 
-indexToptTmax = find(Topt<Tmax-1E-6,1);
-tToptTmax = t(indexToptTmax)
-XAToptTmax = XA(indexToptTmax)
-ToptTmax = Topt(indexToptTmax)
-
 // GRÁFICAS
 scf(2); clf(2); 
-plot(t,XA,tToptTmax,XAToptTmax,'ro');
-xgrid; xtitle('RDMP-6','t','XA');
+plot(t,XA,'m-');
+xgrid; xlabel('t'); legend('XA',-2,%f);
 
 scf(3); clf(3); 
-plot(t(1:$-1),Topt,tToptTmax,ToptTmax,'ro');
-xgrid; xtitle('RDMP-6','t','Topt');
+plot(t(1:$-1),Topt,'r-');
+xgrid; xlabel('t'); legend('Topt',-2,%f);
+
+indexTc = find(Topt<Tmax-1E-6,1);
+tTc = t(indexTc)
+Tc = Topt(indexTc)
+plot(tTc,Tc,'ro');

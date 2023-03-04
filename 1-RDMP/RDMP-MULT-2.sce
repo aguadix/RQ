@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // RDMP-MULT-2.sce
 // 1) A => B
 // 2) A => C
@@ -86,12 +86,12 @@ T  = x(5,:); Tfin = T($)
 // GRÁFICAS
 scf(1);clf(1);
 plot(t,CA,t,CB,t,CC,t,CD);
-xgrid; xtitle('RDMP-MULT-2','t','CA(azul),CB(verde),CC(rojo),CD(cian)');
+xgrid; xlabel('t'); legend('CA','CB','CC','CD',-2,%f);
 
 scf(2);clf(2);
 plot(t,T);
-xgrid; xtitle('RDMP-MULT-2','t','T');
+xgrid; xlabel('t'); legend('T',-2,%f);
 
 scf(3);
 bar(op,[CAfin,CBfin,CCfin,CDfin],'stacked');
-xgrid; xtitle('RDMP-MULT-2','op','CAfin(azul), CBfin(verde), CCfin(rojo), CDfin(cian)'); 
+xgrid; xlabel('op'); legend('CA','CB','CC','CD',-2,%f);

@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // RDMP-MULT-1.sce
 // 1) A => B
 // 2) B => C
@@ -58,23 +58,23 @@ CD = x(4,:); CDfin = CD($)
 // GRÁFICAS
 scf(1); clf(1); 
 plot(t,CA,t,CB,t,CC,t,CD);
-xgrid; xtitle('RDMP-MULT-1','t','CA(azul), CB(verde), CC(rojo), CD(cian)');
+xgrid; xlabel('t'); legend('CA','CB','CC','CD',-2,%f);
 
 CAobj = 0.5;
 indexA = find(CA > CAobj);
 tA = dt*length(indexA)
-plot(t(indexA),CA(indexA),'bo');
+plot(t(indexA),CA(indexA),'b.');
 
 CBlo = 0.15; CBup = 0.20;
 indexB = find(CB > CBlo & CB < CBup);
 tB = dt*length(indexB)
-plot(t(indexB),CB(indexB),'go');
+plot(t(indexB),CB(indexB),'g.');
 
 dCCdt = diff(CC)/dt;
 indexC = find(dCCdt > 0);
 tC = dt*length(indexC)
-plot(t(indexC),CC(indexC),'ro');
+plot(t(indexC),CC(indexC),'r.');
 
 indexD = find(CD == max(CA,CB,CC,CD));
 tD = dt*length(indexD)
-plot(t(indexD),CD(indexD),'co');
+plot(t(indexD),CD(indexD),'c.');

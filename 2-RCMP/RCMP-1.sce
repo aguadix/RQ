@@ -1,8 +1,9 @@
 clear; clc; 
-// RCMP-1a.sce
+// RCMP-1.sce
 // A => B
 // Isotermo
-// Estado estacionario
+
+// (a) Estado estacionario
 
 // SISTEMA DE ECUACIONES ALGEBRAICAS
 function dxdt = f(x)
@@ -36,3 +37,27 @@ xeeguess = [CAeeguess;CBeeguess];
 [xee,fxee,info] = fsolve(xeeguess,f)
 CAee = xee(1)
 CBee = xee(2)
+
+// (b) Dinámica
+
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = g(t,x)
+    dxdt = f(x)
+endfunction
+
+// CONDICIONES INICIALES
+CAini = 1; CBini = 0; // mol/L
+xini = [CAini;CBini];
+
+// TIEMPO
+tfin = 20; dt = 0.1; t = 0:dt:tfin; // h
+
+// RESOLVER
+x = ode(xini,0,t,g);
+CA = x(1,:); CAfin = CA($)
+CB = x(2,:); CBfin = CB($)
+
+// GRÁFICAS
+scf(1); clf(1);
+plot(t,CA,t,CB);
+xgrid; xlabel('t'); legend('CA','CB',-2,%f);

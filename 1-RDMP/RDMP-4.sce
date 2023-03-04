@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // RDMP-4.sce
 // 2 A <=> B
 // Isotermo
@@ -41,28 +41,28 @@ tfin = 100; dt = 0.1; t = 0:dt:tfin; // h
 
 // RESOLVER
 x = ode(xini,0,t,f);
-CA = x(1,:); CAeq = CA($)
-CB = x(2,:); CBeq = CB($)
+CA = x(1,:); CAfin = CA($)
+CB = x(2,:); CBfin = CB($)
 
-dCAdt = diff(CA)/dt;
-dCBdt = diff(CB)/dt;
-
-toleq = 1E-5;
-indexeq = find(max((abs(dCAdt),abs(dCBdt)))<toleq,1);
-teq = t(indexeq)
+dCAdt = diff(CA)/dt; dCBdt = diff(CB)/dt; 
+dCAdteq = 1E-5; dCBdteq = 1E-5; // mol/(L*h)
+indexCAeq = find(abs(dCAdt)<dCAdteq,1); indexCBeq = find(abs(dCBdt)<dCBdteq,1);
+tCAeq = t(indexCAeq), tCBeq = t(indexCBeq)
+CAeq = CA(indexCAeq), CBeq = CB(indexCBeq)
 
 indexCACB = find(CA<CB,1);
 tCACB = t(indexCACB)
-CACACB = CA(indexCACB)
+CACB = CA(indexCACB)
 
 // GRÁFICAS
 scf(1); clf(1); 
-plot(t,CA,t,CB,tCACB,CACACB,'ro');
-xgrid; xtitle('RDMP-4','t','CA(azul), CB(verde)');
+plot(t,CA,t,CB);
+plot(tCAeq,CAeq,'b.',tCBeq,CBeq,'g.');
+plot(tCACB,CACB,'bo');
+xgrid; xlabel('t'); legend('CA','CB',-2,%f);
 
 scf(2); clf(2); 
 plot(t(1:$-1),abs(dCAdt),t(1:$-1),abs(dCBdt));
-plot(teq,toleq,'ro'); 
-xgrid; xtitle('RDMP-4','t','|dCAdt| (azul), |dCBdt| (verde)');
-a2 = gca;
-a2.log_flags = "nln" ;
+plot(tCAeq,dCAdteq,'b.',tCBeq,dCBdteq,'g.'); 
+xgrid; xlabel('t'); legend('|dCAdt|','|dCBdt|',-2,%f);
+a2 = gca; a2.log_flags = "nl";

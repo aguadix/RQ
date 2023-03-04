@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // INTRO-3.sce 
 // CÁLCULO NUMÉRICO DE LA MATRIZ JACOBIANA
 

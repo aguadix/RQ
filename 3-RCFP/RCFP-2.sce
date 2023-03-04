@@ -1,9 +1,10 @@
-clear; clc; 
+clear; clc;
 // RCFP-2.sce
 // A + B => 2 B
 // Isotermo
 // Estado estacionario
 // Recirculación 
+
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdtau = f(tau,x)
@@ -76,8 +77,8 @@ CB = x(2,:); CBs = xs(2)
 
 scf(1); clf(1);
 plot(l,CA,l,CB);
-xgrid; xtitle('RCFP-2','L','CA(azul), CB(verde)');
+xgrid; xlabel('l'); legend('CA','CB',-2,%f);
 
 scf(2);
-plot(R,CAs,'bx');
-xgrid; xtitle('RCFP-2','R','CAs');
+plot(R,CAs,'o');
+xgrid; xlabel('R'); ylabel('CAs');

@@ -1,26 +1,27 @@
-clear; clc;
+clear; clc; 
 // SCILAB-1.sce
 
 // Escalares
 a = 2
-b = 3
+b = 3;
 
-c1 = a+b
-c2 = a*b
-c3 = a^b
-c4 = sqrt(2*a+7*b)
-c5 = exp(2)
-c6 = log(a)
-c7 = log10(5*a)
+c = a+b
+c = a*b, c = a^b
+c = sqrt(2*a+7*b), c = exp(2), c = log(a), c = log10(5*a)
 
 // Vectores
+v = [1; 3; 5; -1; 1; -3; 4; 2; -2]
+v = [1, 3, 5, -1, 1, -3, 4, 2, -2]
 v = [1 3 5 -1 1 -3 4 2 -2]
 
 vt = v'
 v2 = v(2)
+v(3) = 6
 vf = v($)
 v24 = v(2:4)
 vpar = v(2:2:$)
+v($+1) = 1
+vi = 0; index = 7; v = [v(1:index-1),vi,v(index:$)]
 vrev = v($:-1:1)
 
 vlength = length(v) 

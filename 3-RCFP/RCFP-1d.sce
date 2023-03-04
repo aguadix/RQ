@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // RCFP-1d.sce
 // A + B <=> C
 // Adiabático
@@ -104,17 +104,17 @@ XA2 = 1 - CA2/CA0; XA2s = XA2($)
 
 // GRÁFICAS
 scf(1); clf(1); 
-plot(l1,XA1,l2,XA2);
-xgrid; xtitle('RCFP-1d','l','XA'); 
+plot(l1,XA1,'m',l2,XA2,'m--');
+xgrid; xlabel('l'); legend('XA1','XA2',-2,%f); 
 
 scf(2); clf(2); 
-plot(l1,T1,l2,T2);
-xgrid; xtitle('RCFP-1d','l','T');
+plot(l1,T1,'r',l2,T2,'r--');
+xgrid; xlabel('l'); legend('T1','T2',-2,%f); 
 
 scf(3); clf(3); 
-plot(T1,XA1,'o-',T2,XA2,'o-');
-xgrid; xtitle('RCFP-1d','T','XA');
+plot(T1,XA1,'mo-',T2,XA2,'m.-');
+xgrid; xlabel('T'); legend('XA1','XA2',-2,%f); 
 
 scf(4);
-plot(L1, XA2s,'ro');
-xgrid; xtitle('RCFP-1d','L1','XA2s');
+plot(L1, XA2s,'mo');
+xgrid; xlabel('L1'); ylabel('XA2s'); 

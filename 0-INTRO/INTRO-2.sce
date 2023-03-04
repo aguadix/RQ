@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // INTRO-2.sce
 // RESOLUCIÓN NUMÉRICA DE UN SISTEMA DE ECUACIONES DIFERENCIALES
 
@@ -14,7 +14,7 @@ xini = [1;0;0]  // Condiciones iniciales (valores a tiempo cero)
 dt = 0.1; tfin = 10; t = 0:dt:tfin;  // Vector de tiempo
 
 
-// (a) MÉTODO DE EULER
+// (a) MÉTODO. DE EULER
 
 x(:,1) = xini;  // Colocar las condiciones iniciales en la primera columna
 
@@ -24,10 +24,10 @@ end
 
 scf(1); clf(1);// Configura y limpia la ventana gráfica
 plot(t,x,'o');   // Gráfica
-xgrid; xtitle('INTRO-2','t','x1(azul), x2(verde), x3(rojo)'); // Cuadrícula y títulos
+xgrid; xlabel('t');
 
 
-// (b) MÉTODO RK4
+// (b) MÉTODO. RK4
 
 x(:,1) = xini;  // Colocar las condiciones iniciales en la primera columna
 
@@ -46,3 +46,7 @@ plot(t,x,'.'); // Gráfica
 
 x = ode(xini,0,t,f);
 plot(t,x,'-'); // Gráfica 
+
+legend('x1 EULER','x2 EULER','x3 EULER','x1 RK4','x2 RK4','x3 RK4','x1 ode','x2 ode','x3 ode',-2,%f);
+
+

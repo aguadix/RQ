@@ -3,7 +3,8 @@ clear; clc;
 // 1) A + B => P*
 // 2) A + B => Q
 // Isotermo
-// Dinámica
+
+// (a)
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
@@ -79,9 +80,10 @@ tBopt = tBinterval(indexNPfinmax)
 scf(1); clf(1);
 plot(tBinterval,NPfin,'ro');
 plot(tBopt,NPfinmax,'x');
-xgrid; xtitle('SEMI-1','tB','NPfin');
+xgrid; xlabel('tB'); ylabel('NPfin');
 
-// DINÁMICA PARA tBopt
+// (b)
+
 tB = tBopt;
 FB = VB/tB;
 
@@ -96,8 +98,8 @@ NQ = x(5,:); NQfin = NQ($)
 // GRÁFICAS
 scf(2); clf(2);
 plot(t,V);
-xgrid; xtitle('SEMI-1','t','V');
+xgrid; xlabel('t'); legend('V',-2,%f);
 
 scf(3); clf(3);
 plot(t,NA,t,NB,t,NP,t,NQ);
-xgrid; xtitle('SEMI-1','t','NA(azul), NB(verde), NP(rojo), NQ(cian)');
+xgrid; xlabel('t'); legend('NA','NB','NP','NQ',-2,%f);

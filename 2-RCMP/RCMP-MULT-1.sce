@@ -1,9 +1,10 @@
-clear; clc;  
+clear; clc; 
 // RCMP-MULT-1a.sce
 // 1) A + B => P*
 // 2) P + B => Q
 // 2 reactores isotermos en serie 
-// Estado estacionario
+
+// (a) Estado estacionario
 
 // SISTEMA DE ECUACIONES ALGEBRAICAS
 function dxdt = f(x)
@@ -96,4 +97,50 @@ frac1opt = frac1interval(indexSELmax)
 scf(1); clf(1);
 plot(frac1interval,SEL,'ro');
 plot(frac1opt,SELmax,'x');
-xgrid; xtitle('RCMP-MULT-1a','frac1','SEL');
+xgrid; xlabel('frac1'); ylabel('SEL');
+
+// (b) Dinámica
+
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = g(t,x)
+    dxdt = f(x)
+endfunction
+
+// CONSTANTES
+FB1 = frac1opt*FB;
+FB2 = (1-frac1opt)*FB;
+F1 = FA + FB1;
+F2 = F1 + FB2;
+
+// CONDICIONES INICIALES
+CA1ini = 0; CB1ini = 0; CP1ini = 0; CQ1ini = 0;
+CA2ini = 0; CB2ini = 0; CP2ini = 0; CQ2ini = 0;  // mol/L
+xini = [CA1ini; CB1ini; CP1ini; CQ1ini; CA2ini; CB2ini; CP2ini; CQ2ini];
+
+// TIEMPO
+tfin = 3000; dt = 1; t = 0:dt:tfin; // s
+
+// RESOLVER
+x = ode(xini,0,t,g);
+
+// Reactor 1
+CA1 = x(1,:); CA1fin = CA1($)
+CB1 = x(2,:); CB1fin = CB1($)
+CP1 = x(3,:); CP1fin = CP1($)
+CQ1 = x(4,:); CQ1fin = CQ1($)
+// Reactor 2
+CA2 = x(5,:); CA2fin = CA2($)
+CB2 = x(6,:); CB2fin = CB2($)
+CP2 = x(7,:); CP2fin = CP2($)
+CQ2 = x(8,:); CQ2fin = CQ2($)
+
+SELfin = CP2fin/CQ2fin
+
+// GRÁFICAS
+scf(2); clf(2); // Reactor 1
+plot(t,CA1,t,CB1,t,CP1,t,CQ1);
+xgrid; xlabel('t'); legend('CA1','CB1','CP1','CQ1',-2,%f);
+
+scf(3); clf(3); // Reactor 2
+plot(t,CA2,t,CB2,t,CP2,t,CQ2);
+xgrid; xlabel('t'); legend('CA2','CB2','CP2','CQ2',-2,%f);

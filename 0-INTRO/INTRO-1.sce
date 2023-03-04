@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // INTRO-1.sce
 // RESOLUCIÓN NUMÉRICA DE UN SISTEMA DE ECUACIONES ALGEBRAICAS
 
@@ -14,14 +14,14 @@ clf(1); // Limpia ventana gráfica
 t = 0:0.001:1; x1 = cos(2*%pi*t); x2 = sin(2*%pi*t); plot(x1,x2); // Dibuja f1(x)=0
 x1 = -1:0.001:1; x2 = x1^2; plot(x1,x2); // Dibuja f2(x)=0
 xgrid; // Cuadrícula
-xtitle('INTRO-1','x1','x2'); // Títulos
+xlabel('x1'); ylabel('x2'); // Títulos
 
 // Solución supuesta
 xguess = [0.5;0.5];  
-plot(xguess(1),xguess(2),'ro');
+plot(xguess(1),xguess(2),'r.');
 
 
-// (a) MÉTODO DE NEWTON
+// (a) MÉTODO. DE NEWTON
 
 // Jacobiano
 function dfdx = J(x)   

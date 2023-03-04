@@ -73,17 +73,20 @@ Ts = x(1:N,:); Tsfin = Ts(:,$)
 CA = x(N+1,:); CAfin = CA($)
 T  = x(N+2,:); Tfin = T($)
 
+[Tmax,indexTmax] = max(T)
+tTmax = t(indexTmax)
+
 // GRÁFICAS
 scf(1); clf(1);
 plot(t,CA);
-xgrid; xtitle('RDMP-3c','t','CA');
+xgrid; xlabel('t'); legend('CA',-2,%f);
 
 scf(2); clf(2);
-plot(t,T,t,Ts);
-xgrid; xtitle('RDMP-3c','t','T(azul), Ts(sectores)');
+plot(t,T,'r-',t,Ts,'r:',tTmax,Tmax,'ro');
+xgrid; xlabel('t'); legend('T','Ts',-2,%f);
 
 scf(3); clf(3);
-plot(Tsini,'ro-');      // Inicial
-plot(Ts(:,$/2),'ro-');  // Intermedia
-plot(Tsfin,'ro-');      // Final
-xgrid; xtitle('RDMP-3c','Sector','Ts inicial, intermedia y final');
+plot(Tsini,'ro-');      // t=0
+plot(Ts(:,$/2),'ro-');  // t=tfin/2
+plot(Tsfin,'ro-');      // t=tfin
+xgrid; xlabel('Sector'); ylabel('Ts');

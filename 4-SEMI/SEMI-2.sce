@@ -2,7 +2,8 @@ clear; clc;
 // SEMI-2.sce 
 // A + B => C
 // Adiabático
-// Dinámica
+
+// (a)
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
@@ -76,15 +77,15 @@ VT = x(5,:); T = VT./V; Tfin = T($)
 // GRÁFICAS
 scf(1); clf(1);
 plot(t,V);
-xgrid; xtitle('SEMI-2','t','V');
+xgrid; xlabel('t'); legend('V',-2,%f);
 
 scf(2); clf(2);
 plot(t,NA,t,NB,t,NC);
-xgrid; xtitle('SEMI-2','t','NA(azul), NB(verde), NC(rojo)');
+xgrid; xlabel('t'); legend('NA','NB','NC',-2,%f);
 
 scf(3); clf(3);
-plot(t,T,);
-xgrid; xtitle('SEMI-2','t','T');
+plot(t,T,'r');
+xgrid; xlabel('t'); legend('T',-2,%f);
 
 // Máximo y mínimo global
 [Tmax,indexTmax] = max(T)
@@ -101,8 +102,9 @@ tTe = t(indexTe)
 Te = T(indexTe)
 plot(tTe,Te,'rx');
 
-// T0 => Tini-3 < T < Tini+3
-T0interval = 273:0.1:300; // K
+// (b)
+
+T0interval = 273:0.1:280; // K
 
 for i = 1:length(T0interval)
     T0 = T0interval(i);
@@ -116,8 +118,11 @@ end
 
 scf(4); clf(4);
 plot(T0interval,Tmax,'ro',T0interval,Tmin,'bo');
-xgrid; xtitle('SEMI-2','T0','Tmax(rojo), Tmin(azul)');
+xgrid; xlabel('T0'); legend('Tmax','Tmin',-2,%f);
 
 DT = 3; // K
 indexDT = find(Tmax < Tini+DT & Tmin > Tini-DT);
 plot(T0interval(indexDT),Tmax(indexDT),'r.',T0interval(indexDT),Tmin(indexDT),'b.');
+
+T0a = T0interval(indexDT(1))
+T0b = T0interval(indexDT($))
