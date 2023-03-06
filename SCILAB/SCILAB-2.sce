@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // SCILAB-2.sce
 
 // Constantes
@@ -62,14 +62,17 @@ plot(tyi,yi,'gx');
 
 // Integral
 ta = 0.5; indexta = find(t==ta);
-tb = 1.0; indextb = find(t==tb);
+tb = 2.5; indextb = find(t==tb);
 indexI = indexta:indextb;
 tI = t(indexI);
 yI = y(indexI);
 I = inttrap(tI,yI)
-rects = [tI;yI;dt*ones(1,length(tI));yI];
+
+rectspos = [tI; yI;                  dt*ones(1,length(tI));  yI];
+rectsneg = [tI; zeros(1,length(tI)); dt*ones(1,length(tI)); -yI];
 fill = 10*ones(1,length(tI));
-xrects(rects,fill);
+xrects(rectspos,fill);
+xrects(rectsneg,fill);
 
 // Derivada
 t0 = 3;
