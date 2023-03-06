@@ -61,11 +61,15 @@ yi = y(indexyi)
 plot(tyi,yi,'gx');
 
 // Integral
-indexI = 1:indexy0(1);
+ta = 0.5; indexta = find(t==ta);
+tb = 1.0; indextb = find(t==tb);
+indexI = indexta:indextb;
 tI = t(indexI);
 yI = y(indexI);
-xfpoly(tI,yI,4)
 I = inttrap(tI,yI)
+rects = [tI;yI;dt*ones(1,length(tI));yI];
+fill = 10*ones(1,length(tI));
+xrects(rects,fill);
 
 // Derivada
 t0 = 3;
