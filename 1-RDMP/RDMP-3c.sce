@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // RDMP-3c.sce
 // A => B
 // No adiabático: serpentín
@@ -13,13 +13,13 @@ function dxdt = f(t,x)
     CA = x(N+1)
     T  = x(N+2)
     // Calor transferido del reactor al serpentín
-    i = 1:N; Q(i) = U*As*(T-Ts(i))
+    Q(1:N) = U*As*(T-Ts)
     // Balance de energía en el serpentín
     // d(Vs*RHOs*CPs*Ts(i))dt =  Fs*RHOs*CPs*Ts(i-1) - Fs*RHOs*CPs*Ts(i) + Q(i)
     // Sector 1
     dTsdt(1) = Fs*(Ts0-Ts(1))/Vs + Q(1)/(Vs*RHOs*CPs)
     // Resto de sectores
-    i = 2:N; dTsdt(i) = Fs*(Ts(i-1)-Ts(i))/Vs + Q(i)/(Vs*RHOs*CPs)
+    dTsdt(2:N) = Fs*(Ts(1:N-1)-Ts(2:N))/Vs + Q(2:N)/(Vs*RHOs*CPs)
     // Ecuación de Arrhenius
     k = k0*exp(-E/(R*T))
     // Velocidad de reacción
@@ -59,7 +59,7 @@ E = 41570; // J/mol
 R = 8.314; // J/(mol*K)
 
 // CONDICIONES INICIALES
-i = 1:N; Tsini(i) = 283; // K
+Tsini(1:N) = 283; // K
 CAini = 500; // mol/m3
 Tini = 283; // K
 xini = [Tsini; CAini; Tini];

@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // RDMP-4.sce
 // 2 A <=> B
 // Isotermo

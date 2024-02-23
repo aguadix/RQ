@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // RDMP-MULT-2.sce
 // 1) A => B
 // 2) A => C

@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // RDMP-3a.sce
 // A => B
 // No adiabático: camisa a temperatura constante

@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // RDMP-6.sce
 // A <=> B
 // Progresión óptima de temperatura
