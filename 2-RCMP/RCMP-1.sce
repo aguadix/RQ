@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // RCMP-1.sce
 // A => B
 // Isotermo

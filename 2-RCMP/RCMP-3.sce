@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // RCMP-3.sce
 // A => B
 // No adiabático
