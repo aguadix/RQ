@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; 
 // RCFP-1d.sce
 // A + B <=> C
 // Adiabático
