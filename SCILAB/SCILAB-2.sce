@@ -1,4 +1,4 @@
-clear; clc; 
+clear; clc;
 // SCILAB-2.sce
 
 // Constantes
