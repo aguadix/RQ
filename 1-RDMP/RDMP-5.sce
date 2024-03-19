@@ -86,7 +86,9 @@ plot(t,XA,'m-',tTeq,XATeq,'m.',tXAobj,XAobj,'mo');
 xgrid; xlabel('t'); legend('XA',-2,%f);
 
 scf(4);
-subplot(211); plot(Tini,XATeq,'mo');
+plot(Tini,XATeq,'mo');
 xgrid; xlabel('Tini'); ylabel('XATeq');
-subplot(212); plot(Tini,tXAobj,'go');
+
+scf(5);
+plot(Tini,tXAobj,'go');
 xgrid; xlabel('Tini'); ylabel('tXAobj');
