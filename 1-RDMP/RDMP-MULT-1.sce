@@ -69,6 +69,8 @@ CBlo = 0.15; CBup = 0.20;
 indexB = find(CB > CBlo & CB < CBup);
 tB = dt*length(indexB)
 plot(t(indexB),CB(indexB),'g.');
+indexdB = find(diff(indexB) > 1);
+tintervB = t([indexB(1),indexB(indexdB+1);indexB(indexdB),indexB($)]')
 
 dCCdt = diff(CC)/dt;
 indexC = find(dCCdt > 0);
