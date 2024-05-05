@@ -18,7 +18,7 @@ function dxdt = f(x)
     r11 = k1*CA1*CB1
     r21 = k2*CP1*CB1
     // Balances de materia
-    // d(V1*CA1)dt = F*CA0 - F1*CA1 - r11*V1
+    // d(V1*CA1)dt = FA*CA0 - F1*CA1 - r11*V1
     dCA1dt = (FA*CA0 - F1*CA1)/V1 - r11
     // d(V1*CB1)dt = FB1*CB0 - F1*CB1 - r11*V1 - r21*V1
     dCB1dt = (FB1*CB0 - F1*CB1)/V1 - r11 - r21

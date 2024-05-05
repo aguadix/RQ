@@ -38,14 +38,14 @@ Q = UA*(T-TJ); // Calor transferido del reactor a la camisa
 // d(V*CA)dt = F*CA0 - F*CA - r1*V - r2*V 
 // 0 = F*CA0 - F*CA - k1*CA^2*V - k2*CA*V
 a = -k1*V; b = -F-k2*V; c = F*CA0;
-CAbm = (-b-sqrt(b^2-4*a*c))./(2*a);
+CAbm = (-b-sqrt(b.^2-4*a.*c))./(2*a);
 plot(CAbm,T,'r-');
 
 // Balance de energía
 // d(V*RHO*CP*T)dt = F*RHO*CP*T0 - F*RHO*CP*T - H1*r1*V - H2*r2*V - Q
 // 0 = F*RHO*CP(T0-T) - H1*k1*CA^2*V - H2*k2*CA*V - Q
 a = -H1*k1*V; b = -H2*k2*V; c = F*RHO*CP*(T0-T) - Q;
-CAbe = (-b+sqrt(b^2-4*a.*c))./(2*a)
+CAbe = (-b+sqrt(b.^2-4*a.*c))./(2*a)
 plot(CAbe,T,'r--');
 
 // LOCALIZACIÓN DE ESTADOS ESTACIONARIOS
