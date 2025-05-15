@@ -36,8 +36,8 @@ CB0 = 0.01; // mol/L
 x0 = [CA0;CB0];
 
 // TIEMPO DE RESIDENCIA
-tau = 0:TAU/1000:TAU; // h
-l = 0:L/1000:L, // dm
+N = 1000; tau = 0:TAU/N:TAU; // h
+l = 0:L/N:L, // dm
 
 // SOLUCIÓN SUPUESTA
 CAsguess = 2; CBsguess = 0.01; // mol/L
@@ -71,7 +71,6 @@ for i = 1:imax
 
 end
 
-i
 CA = x(1,:); CAs = xs(1)
 CB = x(2,:); CBs = xs(2)
 

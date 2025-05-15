@@ -57,8 +57,8 @@ T0 = 310; // K
 x0 = [CA0;CB0;CC0;T0];
 
 // TIEMPO DE RESIDENCIA
-tau = 0:TAU/100:TAU; // h
-l = 0:L/100:L; // dm
+N = 800; tau = 0:TAU/N:TAU; // h
+l = 0:L/N:L; // dm
 
 // RESOLVER
 x = ode(x0,0,tau,f);

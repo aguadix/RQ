@@ -60,8 +60,8 @@ CA0 = 1.5; CB0 = 2; CC0 = 0.1; // mol/L
 x0 = [CA0;CB0;CC0];
 
 // TIEMPO DE RESIDENCIA
-tau = 0:TAU/100:TAU; // h
-l = 0:L/100:L; // dm
+N = 800; tau = 0:TAU/N:TAU; // h
+l = 0:L/N:L; // dm
 
 // RESOLVER
 x = ode(x0,0,tau,f);
@@ -73,7 +73,7 @@ XA = 1 - CA/CA0; XAs = XA($)
 // GRÁFICAS
 scf(1); clf(1); 
 plot(l,CA,l,CB,l,CC);
-xgrid; xlabel('t'); legend('CA','CB','CC',-2,%f);
+xgrid; xlabel('l'); legend('CA','CB','CC',-2,%f);
 
 scf(2); clf(2); 
 plot(l,XA,'m');
